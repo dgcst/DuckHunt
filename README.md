@@ -1,2 +1,2 @@
-# DProject
-Development of a game (@ Academia de Código)
+# DuckHunt
+Development of a game inspired by DuckHunt (@ Academia de Código)
