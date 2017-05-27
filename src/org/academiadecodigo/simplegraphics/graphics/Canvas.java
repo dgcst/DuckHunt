@@ -32,6 +32,7 @@ public class Canvas {
         frame.add(component);
         frame.pack();
         frame.setLocation(LOCATION_OFFSET, LOCATION_OFFSET);
+        frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("images/cursor.png").getImage(),new Point(0,0),"custom cursor"));
         frame.setVisible(true);
     }
 
