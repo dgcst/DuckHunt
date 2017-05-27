@@ -19,6 +19,36 @@ public class Gun extends GameObjects {
         bullets = 100;
     }
 
+    /*
+    // BULLETS LOGIC
+
+    private Picture [] pic1;
+    private int picNumber;
+    private int maxBullets = 10;
+    private int bulletRemove = maxBullets-1;
+
+    //*****************************************************************
+       for (int picNumber=0; picNumber<=maxBullets; picNumber++){
+        pic1[picNumber] = new Picture(20+(40*picNumber), 500, "images/bullet.png");
+        pic1[picNumber].grow(-150, -220);
+        pic1[picNumber].draw();
+    }
+    //*****************************************************************
+
+
+    //*****************************************************************
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        pic1[bulletRemove].delete();
+        System.out.println(e);
+        bulletRemove--;
+    }
+    //*****************************************************************
+
+*/
+
+
+
     public void shoot() {
         bullets--;
     }
@@ -48,7 +78,7 @@ public class Gun extends GameObjects {
 
         public void addEventListener() {
             mouse.addEventListener(MouseEventType.MOUSE_CLICKED);
-            mouse.addEventListener(MouseEventType.MOUSE_MOVED);
+            //mouse.addEventListener(MouseEventType.MOUSE_MOVED);
         }
 
         @Override
@@ -57,10 +87,10 @@ public class Gun extends GameObjects {
 
             //e.setX(e.getX()-8);
             //e.setY(e.getY()-28);
-            x = (int) e.getX();
-            y = (int) e.getY();
+            x = (int) (e.getX()-8);
+            y = (int) (e.getY()-28);
 
-            //System.out.println(e);
+            System.out.println("SHOOTING");
         }
 
         @Override
