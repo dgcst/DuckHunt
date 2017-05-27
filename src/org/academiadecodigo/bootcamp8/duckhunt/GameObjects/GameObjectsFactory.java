@@ -19,6 +19,12 @@ public class GameObjectsFactory {
                 return new Duck(DuckType.NORMAL);
             case FAST:
                 return new Duck(DuckType.FAST);
+            case SPECIAL:
+                if (Math.random() < 0.8){
+                    return new Duck(DuckType.NORMAL);
+                } else {
+                    return new Duck(DuckType.SPECIAL);
+                }
         }
         return new Duck(DuckType.NORMAL);
     }

@@ -13,6 +13,7 @@ public class Game {
     private Duck[] ducks;
     private Gun gun;
     private Field field;
+    private int gameScore;
 
 
     public Game() {
@@ -23,7 +24,7 @@ public class Game {
 
     public void init() {
 
-        ducks = new Duck[3];
+        ducks = new Duck[4];
 
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
@@ -33,19 +34,31 @@ public class Game {
     public void start() throws InterruptedException {
         while (true) {
 
-            //Thread.sleep(50);
+            Thread.sleep(100);
+
+
             moveAllDucks();
+            System.out.println(gameScore + " is your game score");
         }
     }
 
     public void moveAllDucks() throws InterruptedException {
-        for (Duck duck : ducks) {
-            if (duck.getXLength() + duck.getSpeed() < field.getWidth() && !duck.isDead()) {
-                duck.move();
+        for (int i = 0; i < ducks.length; i++) {
+            if ((ducks[i].getXLength() + ducks[i].getSpeed() >= field.getWidth())) {
+                ducks[i].kill();
+                ducks[i] = GameObjectsFactory.getNewDuck();
+
+                return;
             }
-            if ((gun.getX() >= duck.getX() && gun.getX() <= duck.getXLength())
-                    && gun.getY() >= duck.getY() && gun.getY() <= duck.getYHeight()) {
-                duck.kill();
+            if ((gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXLength())
+                    && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYHeight()) {
+                ducks[i].kill();
+                ducks[i] = GameObjectsFactory.getNewDuck();
+                gameScore += ducks[i].getKillPoints();
+                return;
+            }
+            if (!ducks[i].isDead()){
+                ducks[i].move();
             }
 
         }

@@ -3,6 +3,6 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 
 public interface MovableRepresentable extends Representable {
 
-    public void move(int speed) throws InterruptedException;
+    void move(int speed) /*throws InterruptedException*/;
 
 }
