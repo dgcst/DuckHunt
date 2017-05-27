@@ -11,6 +11,8 @@ public class Gun extends GameObjects {
 
     private int bullets;
     private GunController gunController;
+    private int x;
+    private int y;
 
     public Gun() {
         gunController = new GunController();
@@ -19,6 +21,14 @@ public class Gun extends GameObjects {
 
     public void shoot() {
         bullets--;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     private class GunController implements MouseHandler {
@@ -48,6 +58,10 @@ public class Gun extends GameObjects {
             e.setX(e.getX()-8);
             e.setY(e.getY()-28);
 
+            x = (int) e.getX();
+            y = (int) e.getY();
+
+            System.out.println(x + y);
             System.out.println(e);
         }
 
