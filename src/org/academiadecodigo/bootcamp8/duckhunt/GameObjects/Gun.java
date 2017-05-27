@@ -64,17 +64,17 @@ public class Gun extends GameObjects {
     private class GunController implements MouseHandler {
 
         private Mouse mouse;
-        private MouseEvent currEvent;
+        //private MouseEvent currEvent;
 
         public GunController() {
             this.mouse = new Mouse(this);
-            this.currEvent = currEvent;
+            //this.currEvent = currEvent;
             addEventListener();
         }
 
-        public MouseEvent getCurrEvent() {
+        /*public MouseEvent getCurrEvent() {
             return currEvent;
-        }
+        }*/
 
         public void addEventListener() {
             mouse.addEventListener(MouseEventType.MOUSE_CLICKED);
@@ -84,12 +84,10 @@ public class Gun extends GameObjects {
         @Override
         public void mouseClicked(MouseEvent e) {
             shoot();
-
-            e.setX(e.getX()-8);
-            e.setY(e.getY()-28);
+            //e.setX(e.getX()-8);
+            //e.setY(e.getY()-28);
             x = (int) e.getX();
             y = (int) e.getY();
-
             System.out.println("SHOOTING");
         }
 
@@ -97,7 +95,6 @@ public class Gun extends GameObjects {
         public void mouseMoved(MouseEvent e) {
             //e.setX(e.getX()-8);
             //e.setY(e.getY()-28);
-
             //System.out.println(e);
         }
     }

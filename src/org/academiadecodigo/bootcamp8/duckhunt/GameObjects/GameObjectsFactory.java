@@ -28,4 +28,10 @@ public class GameObjectsFactory {
         }
         return new Duck(DuckType.NORMAL);
     }
+
+    protected static GameObjects getNewSpecialObject(){
+        int random = (int) (Math.random() * GameObjectsType.values().length);
+        GameObjectsType specialType = GameObjectsType.values()[random];
+        return new Ufo();
+    }
 }

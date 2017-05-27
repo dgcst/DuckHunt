@@ -44,14 +44,14 @@ public class Game {
 
     public void moveAllDucks() throws InterruptedException {
         for (int i = 0; i < ducks.length; i++) {
-            if ((ducks[i].getXLength() + ducks[i].getSpeed() >= field.getWidth())) {
+            if ((ducks[i].getXOffSet() + ducks[i].getSpeed() >= field.getWidth() - 10)) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
 
                 return;
             }
-            if ((gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXLength())
-                    && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYHeight()) {
+            if ((gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet())
+                    && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
                 gameScore += ducks[i].getKillPoints();

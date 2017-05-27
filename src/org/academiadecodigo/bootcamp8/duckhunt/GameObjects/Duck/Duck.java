@@ -14,8 +14,8 @@ public class Duck extends GameObjects {
     private int killPoints;
     private int x;
     private int y;
-    private int xLength;
-    private int yHeight;
+    private int xOffSet;
+    private int yOffSet;
     public static int duckSpawn = 0;
 
     public Duck(DuckType type) {
@@ -25,8 +25,8 @@ public class Duck extends GameObjects {
         this.x = 0;
         this.y = duckSpawnY();
         this.duckPicture = new DuckRepresentation(y, speed);
-        this.xLength = x + duckPicture.getOffsetX();
-        this.yHeight = y + duckPicture.getOffsetY();
+        this.xOffSet = x + duckPicture.getOffsetX();
+        this.yOffSet = y + duckPicture.getOffsetY();
 
     }
 
@@ -46,12 +46,12 @@ public class Duck extends GameObjects {
         return y;
     }
 
-    public int getXLength() {
-        return xLength;
+    public int getXOffSet() {
+        return xOffSet;
     }
 
-    public int getYHeight() {
-        return yHeight;
+    public int getYOffSet() {
+        return yOffSet;
     }
 
     public int getSpeed() {
@@ -79,23 +79,13 @@ public class Duck extends GameObjects {
         }
         duckSpawn = 0;
         return 400;
-
     }
 
-    public void move() /*throws InterruptedException*/ {
-
+    public void move(){
         if (!dead) {
             duckPicture.move(speed);
             x +=  speed;
-            xLength += speed;
-            System.out.println("position X for logical duck " + x);
-            System.out.println("position Y for logical duck " + y);
+            xOffSet += speed;
         }
-
-
-
-
     }
-
-
 }

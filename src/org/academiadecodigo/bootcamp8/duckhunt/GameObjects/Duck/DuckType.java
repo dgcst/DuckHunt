@@ -2,10 +2,10 @@ package org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck;
 // Created by dgcst on 25/05/17
 
 public enum DuckType {
-    NORMAL(20, 100),
-    FAST(40, 200),
+    NORMAL(15, 100),
+    FAST(30, 200),
     SLOW(5, 10),
-    SPECIAL(70, 1000);
+    SPECIAL(50, 1000);
 
     private int speed;
     private int killPoints;
