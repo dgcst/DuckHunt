@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Canvas {
     private static final int MIN_SIZE = 100;
-    private static final int MARGIN = 10;
+    private static final int MARGIN = 0;
     private static final int LOCATION_OFFSET = 120;
     private static Canvas canvas = new Canvas();
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
@@ -32,7 +32,7 @@ public class Canvas {
         frame.add(component);
         frame.pack();
         frame.setLocation(LOCATION_OFFSET, LOCATION_OFFSET);
-        frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("images/cursor.png").getImage(),new Point(0,0),"custom cursor"));
+        frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("media_files/images/cursor.png").getImage(),new Point(0,0),"custom cursor"));
         frame.setVisible(true);
     }
 
