@@ -44,7 +44,7 @@ public class Game {
 
     public void moveAllDucks() throws InterruptedException {
         for (int i = 0; i < ducks.length; i++) {
-            if ((ducks[i].getXOffSet() + ducks[i].getSpeed() >= field.getWidth() - 10)) {
+            if (ducks[i].getXOffSet() + ducks[i].getSpeed() >= field.getWidth()) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
 
