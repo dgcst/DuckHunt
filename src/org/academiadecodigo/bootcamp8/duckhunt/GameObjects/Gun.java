@@ -54,23 +54,21 @@ public class Gun extends GameObjects {
         @Override
         public void mouseClicked(MouseEvent e) {
             shoot();
-            System.out.println(bullets);
-            e.setX(e.getX()-8);
-            e.setY(e.getY()-28);
 
+            //e.setX(e.getX()-8);
+            //e.setY(e.getY()-28);
             x = (int) e.getX();
             y = (int) e.getY();
 
-            System.out.println(x + y);
-            System.out.println(e);
+            //System.out.println(e);
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            e.setX(e.getX()-8);
-            e.setY(e.getY()-28);
+            //e.setX(e.getX()-8);
+            //e.setY(e.getY()-28);
 
-            System.out.println(e);
+            //System.out.println(e);
         }
     }
 
