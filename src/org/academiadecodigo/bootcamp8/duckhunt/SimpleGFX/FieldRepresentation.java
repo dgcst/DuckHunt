@@ -10,8 +10,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class FieldRepresentation implements Representable {
 
     private Picture background;
-    private int width;
-    private int heigth;
+    //private int width;
+    //private int heigth;
 
     @Override
     public void init() {

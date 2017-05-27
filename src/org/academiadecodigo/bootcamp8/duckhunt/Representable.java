@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 
 public interface Representable {
 
-    public void init();
+    void init();
 
 
 }

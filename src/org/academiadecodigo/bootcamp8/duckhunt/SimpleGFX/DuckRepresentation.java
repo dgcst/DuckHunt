@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -19,10 +18,13 @@ public class DuckRepresentation implements MovableRepresentable {
     private boolean dead;
 
 
-    public DuckRepresentation() {
-        duck1 = new Picture(0, 200, "media_files/images/duck1.png");
-        duck2 = new Picture(0, 200, "media_files/images/duck2.png");
-        duck3 = new Picture(0, 200, "media_files/images/duck3.png");
+    public DuckRepresentation(int duckSpawn) {
+        duck1 = new Picture(0, duckSpawn, "media_files/images/duck1.png");
+        System.out.println(duck1.getY());
+        duck2 = new Picture(0, duckSpawn, "media_files/images/duck2.png");
+        System.out.println(duck2.getY());
+        duck3 = new Picture(0, duckSpawn, "media_files/images/duck3.png");
+        System.out.println(duck3.getY());
         //imageorder = 0;
         //x = 0;
         //y = 200;
@@ -39,6 +41,7 @@ public class DuckRepresentation implements MovableRepresentable {
 
     @Override
     public void init() {
+
     }
 
     @Override
@@ -60,19 +63,20 @@ public class DuckRepresentation implements MovableRepresentable {
     }*/
 
             int dx = speed;
-            int sleepTime = 90;
+            int sleepTime = 70;
+            duck3.delete();
             duck1.draw();
-            duck2.translate(dx, 0);
             Thread.sleep(sleepTime);
             duck1.delete();
+            duck2.translate(dx, 0);
             duck2.draw();
-            duck3.translate(dx, 0);
             Thread.sleep(sleepTime);
             duck2.delete();
+            duck3.translate(dx, 0);
             duck3.draw();
-            duck1.translate(dx, 0);
             Thread.sleep(sleepTime);
             duck3.delete();
+            duck1.translate(dx, 0);
         }
     }
 

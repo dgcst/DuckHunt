@@ -85,10 +85,10 @@ public class Gun extends GameObjects {
         public void mouseClicked(MouseEvent e) {
             shoot();
 
-            //e.setX(e.getX()-8);
-            //e.setY(e.getY()-28);
-            x = (int) (e.getX()-8);
-            y = (int) (e.getY()-28);
+            e.setX(e.getX()-8);
+            e.setY(e.getY()-28);
+            x = (int) e.getX();
+            y = (int) e.getY();
 
             System.out.println("SHOOTING");
         }
