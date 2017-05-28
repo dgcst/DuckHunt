@@ -4,4 +4,8 @@ package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
 public abstract class GameObjects {
 
     private GameObjectsType type;
+
+    public void move(){
+
+    }
 }

@@ -49,6 +49,7 @@ public class Game {
 
             moveAllDucks();
             displayScore.draw();
+            specials[0].move();
 
         }
 
