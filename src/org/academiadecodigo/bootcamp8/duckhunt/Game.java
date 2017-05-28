@@ -11,6 +11,7 @@ import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.MenuRepresentation;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.sound.midi.SoundbankResource;
 import javax.xml.bind.SchemaOutputResolver;
@@ -33,13 +34,23 @@ public class Game {
     public void menu() throws InterruptedException {
         Menu menu = new Menu();
         switch (menu.menuSelection()) {
+            case 0:
+                menu.mainMenu();
             case 1:
                 init();
                 start();
-            case 0:
+                break;
+            case 2:
+                menu.instructions();
+                menu.menuSelection();
+            case 3:
+                menu.credits();
+                menu.menuSelection();
+            case 4:
                 System.out.println("Something went wrong with menuSelection.");
         }
     }
+
 
     public void init() throws InterruptedException {
         field = new Field();
@@ -58,7 +69,8 @@ public class Game {
     public void start() throws InterruptedException {
         while (true) {
 
-            gun.resetX();gun.resetY();
+            gun.resetX();
+            gun.resetY();
             displayScore.setText("Score: " + gameScore.toString());
             Thread.sleep(110);
 
@@ -83,11 +95,12 @@ public class Game {
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
-                gun.resetX();gun.resetY();
+                gun.resetX();
+                gun.resetY();
 
                 return;
             }
-            if (!ducks[i].isDead()){
+            if (!ducks[i].isDead()) {
                 ducks[i].move();
             }
         }
@@ -114,7 +127,7 @@ public class Game {
         text2.delete();
     }
 
-    public void scoreInit(){
+    public void scoreInit() {
         displayScore = new Text(120, 750, "Score: " + gameScore.toString());
         displayScore.setColor(Color.BLACK);
         displayScore.grow(80, 20);
