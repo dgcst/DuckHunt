@@ -40,17 +40,17 @@ public class DuckRepresentation implements MovableRepresentable {
         if (!dead) {
             if (imageorder == 0) {
                 duck3.delete();
-                duck1.translate(speed*3, 0);
+                //duck1.translate(speed*3, 0);
                 duck1.draw();
                 imageorder = 1;
             } else if (imageorder == 1) {
                 duck1.delete();
-                duck2.translate(speed*3, 0);
+                //duck2.translate(speed*3, 0);
                 duck2.draw();
                 imageorder = 2;
             } else if (imageorder == 2) {
                 duck2.delete();
-                duck3.translate(speed*3, 0);
+                //duck3.translate(speed*3, 0);
                 duck3.draw();
                 imageorder = 0;
             }

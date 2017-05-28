@@ -37,7 +37,7 @@ public class UfoRepresentation implements MovableRepresentable {
             ufo.draw();
             moveFactor = 1;
             } else {
-            ufo.translate(speed, 0);
+            //ufo.translate(speed, 0);
 
             }
         }

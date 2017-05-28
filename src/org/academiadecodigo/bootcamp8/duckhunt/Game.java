@@ -27,7 +27,7 @@ public class Game {
         field = new Field();
         gun = new Gun();
         gameScore = 0;
-        gun.newBullet();
+
     }
 
     public void init() throws InterruptedException {
@@ -39,6 +39,8 @@ public class Game {
         specials[0] = new Ufo();
         scoreInit();
         welcomeMsg();
+        gun.newBullet();
+        Thread.sleep(50);
     }
 
     public void start() throws InterruptedException {

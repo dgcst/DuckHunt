@@ -20,32 +20,49 @@ public class Gun {
     private int y;
     private Picture[] pic1;
     private int maxBullets = 16;
-    private int bulletRemove = maxBullets - 1;
+    private int bulletRemove;
     private Rectangle background2;
-    private Ellipse reload;
+    private Rectangle reloadBack;
+    private int xInit_Reload = 1000;
+    private int yInit_Reload = 710;
+    private int dxReload = 160;
+    private int dyReload = 70;
+    private boolean firstBullet = false;
+    private boolean reload = true;
+
 
 
     public void newBullet() {
 
-        background2 = new Rectangle(310, 710, 650, 70);
+               /*background2 = new Rectangle(310, 710, 650, 70);
         background2.setColor(Color.GRAY);
-        background2.fill();
+        background2.fill();*/
 
-        Ellipse reload = new Ellipse(1000, 700, 160, 80);
-        reload.setColor(Color.ORANGE);
-        reload.fill();
+        reloadBack = new Rectangle(xInit_Reload, yInit_Reload, dxReload, dyReload);
+        reloadBack.setColor(Color.ORANGE);
+        reloadBack.fill();
 
-        Text text = new Text(1060, 730, "RELOAD");
+        Text text = new Text(1060, 740, "RELOAD");
         text.setColor(Color.BLACK);
         text.grow(30, 25);
         text.draw();
 
-        pic1 = new Picture[bullets];
+        newBullet1();
+    }
 
-        for (int picNumber = 0; picNumber < maxBullets; picNumber++) {
-            pic1[picNumber] = new Picture(200 + (40 * picNumber), 500, "images/bullet.png");
-            pic1[picNumber].grow(-150, -220);
-            pic1[picNumber].draw();
+    public void newBullet1() {
+
+
+        pic1 = new Picture[maxBullets];
+
+        if(!firstBullet || (bulletRemove<=0 && reload)){
+            for (int picNumber = 0; picNumber < maxBullets; picNumber++) {
+                pic1[picNumber] = new Picture(200 + (40 * picNumber), 500, "images/bullet.png");
+                pic1[picNumber].grow(-150, -220);
+                pic1[picNumber].draw();
+                firstBullet = true;
+            }
+            bulletRemove = maxBullets -1;
         }
     }
 
@@ -96,12 +113,22 @@ public class Gun {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            pic1[bulletRemove].delete();
-            bulletRemove--;
-            shoot();
+            if(bulletRemove>=0){
+                pic1[bulletRemove].delete();
+                bulletRemove--;
+                shoot();
+            }
             x = (int) e.getX();
             y = (int) e.getY();
             System.out.println("SHOOTING");
+
+            System.out.println("x" + x + "y"+ y);
+            if ((x >= xInit_Reload && x <= xInit_Reload + dxReload) && y >= yInit_Reload && y <= yInit_Reload +dyReload) {
+                reload=true;
+                System.out.println("reload" + reload);
+
+                newBullet1();
+            }
         }
 
         @Override
