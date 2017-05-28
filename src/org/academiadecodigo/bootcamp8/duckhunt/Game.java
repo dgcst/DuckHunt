@@ -3,8 +3,10 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 // Created by dgcst on 25/05/17
 
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
+import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Gun;
+import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Ufo;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -13,6 +15,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 public class Game {
     private Canvas canvas;
     private Duck[] ducks;
+    private GameObjects[] specials;
     private Gun gun;
     private Field field;
     private Integer gameScore;
@@ -31,6 +34,8 @@ public class Game {
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
+        specials = new GameObjects[1];
+        specials[0] = new Ufo();
         scoreInit();
         welcomeMsg();
     }

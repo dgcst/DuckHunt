@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
-public class Gun extends GameObjects {
+public class Gun {
 
     private int bullets;
     private GunController gunController;
