@@ -7,12 +7,17 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Gun;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Ufo;
+import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.MenuRepresentation;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
+import javax.sound.midi.SoundbankResource;
+import javax.xml.bind.SchemaOutputResolver;
+
 
 public class Game {
+
     private Canvas canvas;
     private Duck[] ducks;
     private GameObjects[] specials;
@@ -21,15 +26,25 @@ public class Game {
     private Integer gameScore;
     private Text displayScore;
 
-
     public Game() {
         canvas = Canvas.getInstance();
-        field = new Field();
-        gun = new Gun();
-        gameScore = 0;
+    }
+
+    public void menu() throws InterruptedException {
+        Menu menu = new Menu();
+        switch (menu.menuSelection()) {
+            case 1:
+                init();
+                start();
+            case 0:
+                System.out.println("Something went wrong with menuSelection.");
+        }
     }
 
     public void init() throws InterruptedException {
+        field = new Field();
+        gameScore = 0;
+        gun = new Gun();
         ducks = new Duck[4];
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();

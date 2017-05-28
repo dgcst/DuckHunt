@@ -7,8 +7,8 @@ public class DuckHunt {
     public static void main(String[] args) throws InterruptedException {
 
         Game game = new Game();
-        game.init();
-        game.start();
+        game.menu();
+        //game.start();
 
 
     }
