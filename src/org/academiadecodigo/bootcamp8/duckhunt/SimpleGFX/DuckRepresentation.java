@@ -12,7 +12,7 @@ public class DuckRepresentation implements MovableRepresentable {
     private Picture duck1;
     private Picture duck2;
     private Picture duck3;
-    private int imageorder;
+    private int imageOrder;
     private boolean dead;
 
 
@@ -20,7 +20,7 @@ public class DuckRepresentation implements MovableRepresentable {
         duck1 = new Picture(xStart, duckSpawn, "images/duck1.png");
         duck2 = new Picture(xStart, duckSpawn, "images/duck2.png");
         duck3 = new Picture(xStart, duckSpawn, "images/duck3.png");
-        imageorder = 0;
+        imageOrder = 0;
     }
 
     public int getOffsetX() {
@@ -38,21 +38,21 @@ public class DuckRepresentation implements MovableRepresentable {
     @Override
     public void move(int speed) {
         if (!dead) {
-            if (imageorder == 0) {
+            if (imageOrder == 0) {
                 duck3.delete();
                 duck1.translate(speed*3, 0);
                 duck1.draw();
-                imageorder = 1;
-            } else if (imageorder == 1) {
+                imageOrder = 1;
+            } else if (imageOrder == 1) {
                 duck1.delete();
                 duck2.translate(speed*3, 0);
                 duck2.draw();
-                imageorder = 2;
-            } else if (imageorder == 2) {
+                imageOrder = 2;
+            } else if (imageOrder == 2) {
                 duck2.delete();
                 duck3.translate(speed*3, 0);
                 duck3.draw();
-                imageorder = 0;
+                imageOrder = 0;
             }
         }
     }
