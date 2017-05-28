@@ -10,8 +10,6 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Ufo;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-
-
 public class Game {
     private Canvas canvas;
     private Duck[] ducks;
@@ -20,6 +18,8 @@ public class Game {
     private Field field;
     private Integer gameScore;
     private Text displayScore;
+    private int gameLevel;
+    private static int levelUp = 1500;
 
 
     public Game() {
@@ -27,6 +27,7 @@ public class Game {
         field = new Field();
         gun = new Gun();
         gameScore = 0;
+        gameLevel = 1;
     }
 
     public void init() throws InterruptedException {
@@ -35,7 +36,7 @@ public class Game {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
-        specials[0] = new Ufo();
+        //specials[0] = GameObjectsFactory.getNewSpecialObject();
         scoreInit();
         welcomeMsg();
     }
@@ -48,8 +49,11 @@ public class Game {
             Thread.sleep(110);
 
             moveAllDucks();
+            if (specials[0] != null){
+            specialsMove();
+            }
+            level();
             displayScore.draw();
-            specials[0].move();
 
         }
 
@@ -60,21 +64,40 @@ public class Game {
             if (ducks[i].getXOffSet() + ducks[i].getSpeed() >= field.getWidth()) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
-
                 return;
             }
+
             if ((gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet())
                     && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
                 gun.resetX();gun.resetY();
-
                 return;
             }
+
             if (!ducks[i].isDead()){
                 ducks[i].move();
             }
+        }
+    }
+
+    public void specialsMove(){
+        int i = 0;
+        if (specials[i].getXOffSet() + specials[i].getSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
+            specials[i].kill();
+            return;
+        }
+        if (!specials[i].isDead()) {
+            specials[i].move();
+        }
+    }
+
+
+    public void level(){
+        if (gameScore > levelUp * gameLevel) {
+            specials[0] = GameObjectsFactory.getNewSpecialObject();
+            gameLevel++;
         }
     }
 
