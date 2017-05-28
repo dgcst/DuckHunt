@@ -15,13 +15,15 @@ public class Game {
     private Duck[] ducks;
     private Gun gun;
     private Field field;
-    private int gameScore;
+    private Integer gameScore;
+    private Text displayScore;
 
 
     public Game() {
         canvas = Canvas.getInstance();
         field = new Field();
         gun = new Gun();
+        gameScore = 0;
     }
 
     public void init() throws InterruptedException {
@@ -29,17 +31,21 @@ public class Game {
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
+        scoreInit();
         welcomeMsg();
     }
 
     public void start() throws InterruptedException {
         while (true) {
 
+            displayScore.setText("Score: " + gameScore.toString());
             Thread.sleep(90);
 
             moveAllDucks();
-            System.out.println(gameScore + " is your game score");
+            displayScore.draw();
+
         }
+
     }
 
     public void moveAllDucks() throws InterruptedException {
@@ -60,7 +66,6 @@ public class Game {
             if (!ducks[i].isDead()){
                 ducks[i].move();
             }
-
         }
     }
 
@@ -83,6 +88,12 @@ public class Game {
         text2.draw();
         Thread.sleep(1000);
         text2.delete();
+    }
+
+    public void scoreInit(){
+        displayScore = new Text(60, 680, "Score: " + gameScore.toString());
+        displayScore.setColor(Color.BLACK);
+        displayScore.grow(50, 10);
     }
 }
 
