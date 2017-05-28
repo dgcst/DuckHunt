@@ -5,7 +5,19 @@ public abstract class GameObjects {
 
     private GameObjectsType type;
 
-    public void move(){
+    public abstract void move();
 
-    }
+    public abstract void kill();
+
+    public abstract boolean isDead();
+
+    public abstract int getX();
+
+    public abstract int getY();
+
+    public abstract int getXOffSet();
+
+    public abstract int getYOffSet();
+
+    public abstract int getSpeed();
 }

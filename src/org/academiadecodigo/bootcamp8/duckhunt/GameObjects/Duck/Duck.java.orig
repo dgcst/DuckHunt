@@ -24,8 +24,11 @@ public class Duck extends GameObjects {
         this.killPoints = type.getKillPoints();
         this.x = 0;
         this.y = duckSpawnY();
+<<<<<<< HEAD
+        this.duckPicture = new DuckRepresentation(y, 0);
+=======
         this.duckPicture = new DuckRepresentation(x, y, speed);
-
+>>>>>>> 53fa2120769039409abc4a39718e01a3d0744ca1
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
 
@@ -84,8 +87,11 @@ public class Duck extends GameObjects {
     public void move() {
         if (!dead) {
             duckPicture.move(speed);
-            x +=  speed;
-
+<<<<<<< HEAD
+            //x +=  speed;
+=======
+            x += speed;
+>>>>>>> 53fa2120769039409abc4a39718e01a3d0744ca1
             xOffSet += speed;
         }
 

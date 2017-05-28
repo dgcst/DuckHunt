@@ -27,8 +27,11 @@ public class Game {
         field = new Field();
         gun = new Gun();
         gameScore = 0;
-        gameLevel = 1;
+<<<<<<< HEAD
 
+=======
+        gameLevel = 1;
+>>>>>>> 53fa2120769039409abc4a39718e01a3d0744ca1
     }
 
     public void init() throws InterruptedException {
