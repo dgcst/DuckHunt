@@ -36,7 +36,6 @@ public class Game {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
-        //specials[0] = GameObjectsFactory.getNewSpecialObject();
         scoreInit();
         welcomeMsg();
     }
