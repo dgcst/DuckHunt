@@ -3,12 +3,8 @@ package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-/**
- * Created by codecadet on 27/05/2017.
- */
 
 public class DuckRepresentation implements MovableRepresentable {
-
     private Picture duck1;
     private Picture duck2;
     private Picture duck3;

@@ -5,8 +5,6 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Gun;
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Ufo;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;

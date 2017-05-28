@@ -4,11 +4,7 @@ import org.academiadecodigo.bootcamp8.duckhunt.Representable;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-/**
- * Created by codecadet on 27/05/2017.
- */
 public class FieldRepresentation implements Representable {
-
     private Picture background;
 
     @Override

@@ -13,7 +13,7 @@ public class Ufo extends GameObjects {
     private int y;
     private int xOffSet;
     private int yOffSet;
-    //public static int duckSpawn = 0;
+
 
     public Ufo() {
         this.speed = 30;
@@ -29,6 +29,8 @@ public class Ufo extends GameObjects {
             ufoRep.move(speed);
             x +=  speed;
             xOffSet += speed;
+            y -= 25;
+            yOffSet -= 25;
         }
     }
 

@@ -9,12 +9,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class UfoRepresentation implements MovableRepresentable {
     private Picture ufo;
     private int moveFactor;
-
     private boolean dead;
 
 
-    public UfoRepresentation(int duckSpawn, int speed) {
-        ufo = new Picture(0, duckSpawn, "images/ufo-down.png");
+    public UfoRepresentation(int y, int speed) {
+        ufo = new Picture(0, y, "images/ufo-down.png");
         moveFactor = 0;
     }
 
@@ -34,11 +33,10 @@ public class UfoRepresentation implements MovableRepresentable {
     public void move(int speed) {
         if (!dead) {
             if (moveFactor == 0){
-            ufo.draw();
-            moveFactor = 1;
+                ufo.draw();
+                moveFactor = 1;
             } else {
-            ufo.translate(speed, -25);
-
+                ufo.translate(speed, -25);
             }
         }
     }

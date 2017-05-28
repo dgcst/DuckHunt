@@ -26,9 +26,15 @@ public class GameObjectsFactory {
         return new Duck(DuckType.NORMAL);
     }
 
+    //Factory for other game objects not ducks with special features
     public static GameObjects getNewSpecialObject(){
         int random = (int) (Math.random() * GameObjectsType.values().length);
         GameObjectsType specialType = GameObjectsType.values()[random];
+
+        switch (specialType) {
+            case UFO:
+                return new Ufo();
+        }
         return new Ufo();
     }
 }
