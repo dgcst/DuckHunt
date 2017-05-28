@@ -6,6 +6,8 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Gun;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 
 public class Game {
@@ -22,20 +24,18 @@ public class Game {
         gun = new Gun();
     }
 
-    public void init() {
-
+    public void init() throws InterruptedException {
         ducks = new Duck[4];
-
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
+        welcomeMsg();
     }
 
     public void start() throws InterruptedException {
         while (true) {
 
-            Thread.sleep(100);
-
+            Thread.sleep(90);
 
             moveAllDucks();
             System.out.println(gameScore + " is your game score");
@@ -62,6 +62,27 @@ public class Game {
             }
 
         }
+    }
+
+    public void welcomeMsg() throws InterruptedException {
+        Text text = new Text(550, 200, "Welcome to the VEGAN Duck Hunt");
+        text.setColor(Color.BLACK);
+        text.grow(400, 100);
+        text.draw();
+        Thread.sleep(3000);
+        text.delete();
+        Text text1 = new Text(600, 200, "Get Ready...");
+        text1.setColor(Color.BLACK);
+        text1.grow(200, 50);
+        text1.draw();
+        Thread.sleep(2000);
+        text1.delete();
+        Text text2 = new Text(600, 200, "GO!");
+        text2.setColor(Color.BLACK);
+        text2.grow(100, 25);
+        text2.draw();
+        Thread.sleep(1000);
+        text2.delete();
     }
 }
 
