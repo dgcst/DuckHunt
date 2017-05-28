@@ -27,6 +27,7 @@ public class Game {
         field = new Field();
         gun = new Gun();
         gameScore = 0;
+        gun.newBullet();
     }
 
     public void init() throws InterruptedException {
@@ -100,9 +101,9 @@ public class Game {
     }
 
     public void scoreInit(){
-        displayScore = new Text(120, 750, "Score: " + gameScore.toString());
+        displayScore = new Text(100, 750, "Score: " + gameScore.toString());
         displayScore.setColor(Color.BLACK);
-        displayScore.grow(80, 20);
+        displayScore.grow(70, 20);
     }
 }
 
