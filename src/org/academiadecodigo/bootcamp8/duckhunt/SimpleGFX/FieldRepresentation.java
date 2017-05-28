@@ -13,7 +13,7 @@ public class FieldRepresentation implements Representable {
 
     @Override
     public void init() {
-        background = new Picture(0,0, "media_files/images/background.png");
+        background = new Picture(0,0, "images/background-up-clouds.png");
         background.draw();
 
     }

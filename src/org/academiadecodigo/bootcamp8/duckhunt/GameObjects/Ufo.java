@@ -9,7 +9,6 @@ public class Ufo extends GameObjects {
     private int speed;
     private UfoRepresentation ufoRep;
     private boolean dead;
-    //private int killPoints;
     private int x;
     private int y;
     private int xOffSet;

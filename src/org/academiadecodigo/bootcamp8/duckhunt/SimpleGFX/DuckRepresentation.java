@@ -17,9 +17,9 @@ public class DuckRepresentation implements MovableRepresentable {
 
 
     public DuckRepresentation(int duckSpawn, int speed) {
-        duck1 = new Picture(0, duckSpawn, "media_files/images/duck1.png");
-        duck2 = new Picture(0, duckSpawn, "media_files/images/duck2.png");
-        duck3 = new Picture(0, duckSpawn, "media_files/images/duck3.png");
+        duck1 = new Picture(0, duckSpawn, "images/duck1.png");
+        duck2 = new Picture(0, duckSpawn, "images/duck2.png");
+        duck3 = new Picture(0, duckSpawn, "images/duck3.png");
         imageorder = 0;
     }
 
