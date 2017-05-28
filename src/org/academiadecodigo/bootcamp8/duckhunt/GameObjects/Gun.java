@@ -56,10 +56,12 @@ public class Gun extends GameObjects {
     public int getX() {
         return x;
     }
+    public void resetX(){ x = -1;}
 
     public int getY() {
         return y;
     }
+    public void resetY(){ y = -1;}
 
     private class GunController implements MouseHandler {
 
@@ -78,14 +80,11 @@ public class Gun extends GameObjects {
 
         public void addEventListener() {
             mouse.addEventListener(MouseEventType.MOUSE_CLICKED);
-            //mouse.addEventListener(MouseEventType.MOUSE_MOVED);
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
             shoot();
-            //e.setX(e.getX()-8);
-            //e.setY(e.getY()-28);
             x = (int) e.getX();
             y = (int) e.getY();
             System.out.println("SHOOTING");

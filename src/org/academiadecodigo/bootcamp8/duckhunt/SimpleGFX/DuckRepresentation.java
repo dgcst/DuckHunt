@@ -62,6 +62,5 @@ public class DuckRepresentation implements MovableRepresentable {
         duck2.delete();
         duck3.delete();
         dead = true;
-        System.out.println("I am dead");
     }
 }

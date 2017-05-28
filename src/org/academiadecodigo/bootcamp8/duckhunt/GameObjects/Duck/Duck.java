@@ -60,7 +60,6 @@ public class Duck extends GameObjects {
 
     public void kill() {
         dead = true;
-        System.out.println("KILLLLLLLLLLED");
         duckPicture.kill();
     }
 

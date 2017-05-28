@@ -38,8 +38,9 @@ public class Game {
     public void start() throws InterruptedException {
         while (true) {
 
+            gun.resetX();gun.resetY();
             displayScore.setText("Score: " + gameScore.toString());
-            Thread.sleep(90);
+            Thread.sleep(110);
 
             moveAllDucks();
             displayScore.draw();
@@ -59,8 +60,10 @@ public class Game {
             if ((gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet())
                     && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
                 ducks[i].kill();
-                ducks[i] = GameObjectsFactory.getNewDuck();
                 gameScore += ducks[i].getKillPoints();
+                ducks[i] = GameObjectsFactory.getNewDuck();
+                gun.resetX();gun.resetY();
+
                 return;
             }
             if (!ducks[i].isDead()){
@@ -70,9 +73,9 @@ public class Game {
     }
 
     public void welcomeMsg() throws InterruptedException {
-        Text text = new Text(550, 200, "Welcome to the VEGAN Duck Hunt");
+        Text text = new Text(580, 100, "Welcome to the VEGAN Duck Hunt");
         text.setColor(Color.BLACK);
-        text.grow(400, 100);
+        text.grow(400, 70);
         text.draw();
         Thread.sleep(3000);
         text.delete();
@@ -82,7 +85,7 @@ public class Game {
         text1.draw();
         Thread.sleep(2000);
         text1.delete();
-        Text text2 = new Text(600, 200, "GO!");
+        Text text2 = new Text(600, 300, "GO!");
         text2.setColor(Color.BLACK);
         text2.grow(100, 25);
         text2.draw();
@@ -91,9 +94,9 @@ public class Game {
     }
 
     public void scoreInit(){
-        displayScore = new Text(60, 680, "Score: " + gameScore.toString());
+        displayScore = new Text(120, 750, "Score: " + gameScore.toString());
         displayScore.setColor(Color.BLACK);
-        displayScore.grow(50, 10);
+        displayScore.grow(80, 20);
     }
 }
 
