@@ -12,14 +12,14 @@ public class MenuRepresentation implements Representable {
 
     @Override
     public void init() throws InterruptedException {
-        menuLoading = new Picture(0,0, "images/menu/loading.png");
-        menuLoading.draw();
-        Thread.sleep(5000);
+        //menuLoading = new Picture(0,0, "images/menu/loading.png");
+        //menuLoading.draw();
+        //Thread.sleep(5000);
+        //menuLoading.delete();
         mainMenu();
     }
 
     public  void mainMenu() {
-        menuLoading.delete();
         menuBackground = new Picture(0, 0, "images/menu/menuButtons.png");
         menuBackground.draw();
     }
@@ -31,6 +31,14 @@ public class MenuRepresentation implements Representable {
     public void credits() {
         credits = new Picture(0,0, "images/menu/credits.png");
         credits.draw();
+    }
+
+    public void creditsDelete() {
+        credits.delete();
+    }
+
+    public void instructionsDelete() {
+        instructions.delete();
     }
 }
 

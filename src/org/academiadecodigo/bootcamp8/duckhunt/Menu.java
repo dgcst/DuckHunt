@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp8.duckhunt;
 
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.MenuRepresentation;
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
@@ -19,19 +20,16 @@ public class Menu extends Game {
     private int playButtonY;
     private int playButtonXOffset;
     private int playButtonYOffset;
-    private MenuRepresentation instructions;
     private int instructionsButtonX;
     private int instructionsButtonY;
     private int instructionsButtonXOffset;
     private int instructionsButtonYOffset;
-    private MenuRepresentation credits;
     private int creditsButtonX;
     private int creditsButtonY;
     private int creditsButtonXOffset;
     private int creditsButtonYOffset;
     private boolean specialScreen;
     private boolean menuSelection;
-    private boolean clicked;
 
     public Menu() throws InterruptedException {
         menuMouse = new MenuMouse();
@@ -65,36 +63,36 @@ public class Menu extends Game {
         return menuSelection;
     }
 
-    public int menuSelection() throws InterruptedException {
+    public void menuSelection() throws InterruptedException {
+
         while (!menuSelection) {
-            Thread.sleep(100);
-
-            //ARRUMAR O MENU
-
-            if (specialScreen && clicked == false) {
-                System.out.println("teste");
+            Thread.sleep(1);
+            if (specialScreen) {
                 specialScreen = false;
-                return 0;
+                if ((getX() >= creditsButtonX && getX() <= creditsButtonXOffset) &&
+                        (getY() >= creditsButtonY && getY() <= creditsButtonYOffset)) {
+                    menuRepresentation.creditsDelete();
+                    menuRepresentation.instructionsDelete();
+                    Thread.sleep(100);
+                    mainMenu();
+                }
             }
             if ((getX() >= playButtonX && getX() <= playButtonXOffset) &&
                     (getY() >= playButtonY && getY() <= playButtonYOffset)) {
                 menuSelection = true;
-                return 1;
             }
             if ((getX() >= instructionsButtonX && getX() <= instructionsButtonXOffset) &&
                     (getY() >= instructionsButtonY && getY() <= instructionsButtonYOffset)) {
-                clicked = false;
                 specialScreen = true;
-                return 2;
+                instructions();
+
             }
             if ((getX() >= creditsButtonX && getX() <= creditsButtonXOffset) &&
                     (getY() >= creditsButtonY && getY() <= creditsButtonYOffset)) {
-                clicked = false;
                 specialScreen = true;
-                return 3;
+                credits();
             }
         }
-        return 4;
     }
 
     public void mainMenu() {
@@ -102,13 +100,11 @@ public class Menu extends Game {
     }
 
     public void instructions() {
-        instructions = new MenuRepresentation();
-        instructions.instructions();
+        menuRepresentation.instructions();
     }
 
     public void credits() {
-        credits = new MenuRepresentation();
-        credits.credits();
+        menuRepresentation.credits();
     }
     private class MenuMouse implements MouseHandler {
 
@@ -127,6 +123,7 @@ public class Menu extends Game {
         public void mouseClicked(MouseEvent e) {
             x = (int) e.getX();
             y = (int) e.getY();
+
             System.out.println(x);
             System.out.println(y);
         }

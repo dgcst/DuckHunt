@@ -33,22 +33,9 @@ public class Game {
 
     public void menu() throws InterruptedException {
         Menu menu = new Menu();
-        switch (menu.menuSelection()) {
-            case 0:
-                menu.mainMenu();
-            case 1:
-                init();
-                start();
-                break;
-            case 2:
-                menu.instructions();
-                menu.menuSelection();
-            case 3:
-                menu.credits();
-                menu.menuSelection();
-            case 4:
-                System.out.println("Something went wrong with menuSelection.");
-        }
+        menu.menuSelection();
+        init();
+        start();
     }
 
 
