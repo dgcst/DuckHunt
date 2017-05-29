@@ -8,7 +8,10 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+
+
 public class Game {
+
     private Canvas canvas;
     private Duck[] ducks;
     private GameObjects[] specials;
@@ -19,16 +22,22 @@ public class Game {
     private int gameLevel;
     private static int levelUp = 1500;
 
-
     public Game() {
         canvas = Canvas.getInstance();
-        field = new Field();
-        gun = new Gun();
-        gameScore = 0;
-        gameLevel = 1;
+    }
+
+    public void menu() throws InterruptedException {
+        Menu menu = new Menu();
+        menu.menuSelection();
+        init();
+        start();
     }
 
     public void init() throws InterruptedException {
+        field = new Field();
+        gameScore = 0;
+        gameLevel = 1;
+        gun = new Gun();
         ducks = new Duck[4];
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
@@ -41,19 +50,20 @@ public class Game {
     public void start() throws InterruptedException {
         while (true) {
 
-            gun.resetX();gun.resetY();
+            gun.resetX();
+            gun.resetY();
             displayScore.setText("Score: " + gameScore.toString());
             Thread.sleep(110);
 
             moveAllDucks();
             if (specials[0] != null){
             specialsMove();
-            }
             level();
+            specials[0].move();
+            }
+            
             displayScore.draw();
-
         }
-
     }
 
     public void moveAllDucks() throws InterruptedException {
@@ -62,6 +72,7 @@ public class Game {
                     ducks[i].getX() + ducks[i].getSpeed() <= 0) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
+
                 return;
             }
 
@@ -71,10 +82,11 @@ public class Game {
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
                 gun.resetX();gun.resetY();
+
                 return;
             }
 
-            if (!ducks[i].isDead()){
+            if (!ducks[i].isDead()) {
                 ducks[i].move();
             }
         }
@@ -120,7 +132,7 @@ public class Game {
         text2.delete();
     }
 
-    public void scoreInit(){
+    public void scoreInit() {
         displayScore = new Text(120, 750, "Score: " + gameScore.toString());
         displayScore.setColor(Color.BLACK);
         displayScore.grow(80, 20);

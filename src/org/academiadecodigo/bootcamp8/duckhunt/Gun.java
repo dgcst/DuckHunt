@@ -19,7 +19,6 @@ public class Gun {
         bullets = 100;
     }
 
-
     public void shoot() {
         bullets--;
     }
@@ -34,10 +33,8 @@ public class Gun {
     }
     public void resetY(){ y = -1;}
 
-
     private class GunController implements MouseHandler {
         private Mouse mouse;
-
 
         public GunController() {
             this.mouse = new Mouse(this);
@@ -57,7 +54,6 @@ public class Gun {
 
         @Override
         public void mouseMoved(MouseEvent e) {
-
         }
     }
 
