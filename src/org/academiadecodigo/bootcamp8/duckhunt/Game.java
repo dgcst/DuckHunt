@@ -24,9 +24,6 @@ public class Game {
 
     public Game() {
         canvas = Canvas.getInstance();
-        field = new Field();
-        gameScore = 0;
-        gameLevel = 1;
     }
 
     public void menu() throws InterruptedException {
@@ -37,6 +34,9 @@ public class Game {
     }
 
     public void init() throws InterruptedException {
+        field = new Field();
+        gameScore = 0;
+        gameLevel = 1;
         gun = new Gun();
         ducks = new Duck[4];
         for (int i = 0; i < ducks.length; i++) {
@@ -58,13 +58,12 @@ public class Game {
             moveAllDucks();
             if (specials[0] != null){
             specialsMove();
-            }
             level();
-            displayScore.draw();
             specials[0].move();
-
+            }
+            
+            displayScore.draw();
         }
-
     }
 
     public void moveAllDucks() throws InterruptedException {
@@ -82,8 +81,6 @@ public class Game {
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
                 gun.resetX();gun.resetY();
-                gun.resetX();
-                gun.resetY();
 
                 return;
             }

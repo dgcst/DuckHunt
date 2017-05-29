@@ -8,8 +8,6 @@ public class DuckHunt {
 
         Game game = new Game();
         game.menu();
-        //game.start();
-
 
     }
 }
