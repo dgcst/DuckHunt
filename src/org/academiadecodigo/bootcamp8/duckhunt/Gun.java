@@ -19,14 +19,12 @@ public class Gun {
     public Gun() {
         gunController = new GunController();
         bullets = 100;
-        sound = new Sound ("/resources/sounds/1.wav");
+        sound = new Sound ("/resources/sounds/gun3.wav");
     }
 
     public void shoot() {
 
         sound.play(true);
-
-        //System.out.println("Sound plays");
         bullets--;
     }
 

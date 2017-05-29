@@ -31,8 +31,9 @@ public class Duck extends GameObjects {
         this.duckPicture = new DuckRepresentation(type, y);
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
-        sound = new Sound ("/resources/sounds/4.wav");
-
+        sound = new Sound ("/resources/sounds/duck.wav");
+        sound.setLoop(2);
+        sound.play(false);
     }
 
     public int getKillPoints() {
@@ -64,8 +65,10 @@ public class Duck extends GameObjects {
     }
 
     public void kill() {
+        sound.stop();
         dead = true;
         duckPicture.kill();
+
     }
 
     private int duckSpawnY() {
@@ -87,7 +90,7 @@ public class Duck extends GameObjects {
 
     public void move() {
         if (!dead) {
-            sound.play(false);
+
             duckPicture.move(xSpeed);
             x += xSpeed;
             xOffSet += xSpeed;
