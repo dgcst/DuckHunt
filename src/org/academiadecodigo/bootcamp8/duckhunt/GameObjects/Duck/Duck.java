@@ -16,7 +16,7 @@ public class Duck extends GameObjects {
     private int y;
     private int xOffSet;
     private int yOffSet;
-    public static int duckSpawn = 0;
+    private static int duckSpawn = 0;
 
     public Duck(DuckType type) {
         this.type = type;
@@ -24,7 +24,7 @@ public class Duck extends GameObjects {
         this.killPoints = type.getKillPoints();
         this.x = 0;
         this.y = duckSpawnY();
-        this.duckPicture = new DuckRepresentation(y, speed);
+        this.duckPicture = new DuckRepresentation(x, y, speed);
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
 
@@ -64,7 +64,7 @@ public class Duck extends GameObjects {
     }
 
     private int duckSpawnY() {
-        if(duckSpawn == 0){
+        if (duckSpawn == 0) {
             duckSpawn++;
             return 40;
         }
@@ -80,11 +80,12 @@ public class Duck extends GameObjects {
         return 400;
     }
 
-    public void move(){
+    public void move() {
         if (!dead) {
             duckPicture.move(speed);
-            x +=  speed;
+            x += speed;
             xOffSet += speed;
         }
+
     }
 }

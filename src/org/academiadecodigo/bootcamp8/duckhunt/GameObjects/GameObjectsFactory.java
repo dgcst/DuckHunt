@@ -7,11 +7,8 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
 public class GameObjectsFactory {
 
     public static Duck getNewDuck() {
-
         int random = (int) (Math.random() * DuckType.values().length);
-
         DuckType duckType = DuckType.values()[random];
-
         switch (duckType) {
             case SLOW:
                 return new Duck(DuckType.SLOW);
@@ -29,9 +26,15 @@ public class GameObjectsFactory {
         return new Duck(DuckType.NORMAL);
     }
 
-    protected static GameObjects getNewSpecialObject(){
+    //Factory for other game objects not ducks with special features
+    public static GameObjects getNewSpecialObject(){
         int random = (int) (Math.random() * GameObjectsType.values().length);
         GameObjectsType specialType = GameObjectsType.values()[random];
+
+        switch (specialType) {
+            case UFO:
+                return new Ufo();
+        }
         return new Ufo();
     }
 }

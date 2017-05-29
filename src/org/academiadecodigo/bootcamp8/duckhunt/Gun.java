@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
+package org.academiadecodigo.bootcamp8.duckhunt;
 
 // Created by dgcst on 25/05/17
 
@@ -18,6 +18,7 @@ public class Gun {
         gunController = new GunController();
         bullets = 100;
     }
+
     public void shoot() {
         bullets--;
     }
@@ -33,7 +34,6 @@ public class Gun {
     public void resetY(){ y = -1;}
 
     private class GunController implements MouseHandler {
-
         private Mouse mouse;
 
         public GunController() {
@@ -50,14 +50,10 @@ public class Gun {
             shoot();
             x = (int) e.getX();
             y = (int) e.getY();
-            System.out.println("SHOOTING");
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            //e.setX(e.getX()-8);
-            //e.setY(e.getY()-28);
-            System.out.println(e);
         }
     }
 
