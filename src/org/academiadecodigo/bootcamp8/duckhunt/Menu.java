@@ -131,9 +131,6 @@ public class Menu extends Game {
         public void mouseClicked(MouseEvent e) {
             x = (int) e.getX();
             y = (int) e.getY();
-
-            System.out.println(x);
-            System.out.println(y);
         }
 
         @Override
