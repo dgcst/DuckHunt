@@ -10,11 +10,12 @@ public enum DuckType {
     FAST(0, 40, 0, 200, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
     SLOW(0, 10, 0, 10, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
     SPECIAL(0, 50, 0, 1000, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
-    REVNORMAL(1080, -20, 0, 100, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png" ),
-    REVFAST(1080, -40, 0, 200, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png"),
-    REVSLOW(1080, -10, 0, 10, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png"),
-    REVSPECIAL(1080, -50, 0, 1000, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png");
+    REVNORMAL(FieldRepresentation.getFieldWidth()-120, -20, 0, 100, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png" ),
+    REVFAST(FieldRepresentation.getFieldWidth()-120, -40, 0, 200, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png"),
+    REVSLOW(FieldRepresentation.getFieldWidth()-120, -10, 0, 10, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png"),
+    REVSPECIAL(FieldRepresentation.getFieldWidth()-120, -50, 0, 1000, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png");
 
+    //120 value above in REV ducks is the length of the picture of the Duck to be used. Update accordingly if pic chance
     private int xStart;
     private int xSpeed;
     private int ySpeed;
