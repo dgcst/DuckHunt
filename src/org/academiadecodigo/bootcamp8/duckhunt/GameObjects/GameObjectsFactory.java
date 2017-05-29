@@ -22,6 +22,18 @@ public class GameObjectsFactory {
                 } else {
                     return new Duck(DuckType.SPECIAL);
                 }
+            case REVSLOW:
+                return new Duck(DuckType.REVSLOW);
+            case REVNORMAL:
+                return new Duck(DuckType.REVNORMAL);
+            case REVFAST:
+                return new Duck(DuckType.REVFAST);
+            case REVSPECIAL:
+                if (Math.random() < 0.8){
+                    return new Duck(DuckType.REVNORMAL);
+                } else {
+                    return new Duck(DuckType.REVSPECIAL);
+                }
         }
         return new Duck(DuckType.NORMAL);
     }

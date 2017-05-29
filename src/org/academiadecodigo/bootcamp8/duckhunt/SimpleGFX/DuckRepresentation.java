@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 
+import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
+import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
 import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -12,10 +14,10 @@ public class DuckRepresentation implements MovableRepresentable {
     private boolean dead;
 
 
-    public DuckRepresentation(int xStart, int duckSpawn, int speed) {
-        duck1 = new Picture(xStart, duckSpawn, "images/duck1.png");
-        duck2 = new Picture(xStart, duckSpawn, "images/duck2.png");
-        duck3 = new Picture(xStart, duckSpawn, "images/duck3.png");
+    public DuckRepresentation(DuckType type, int duckSpawn) {
+        duck1 = new Picture(type.getxStart(), duckSpawn, type.getPic1());
+        duck2 = new Picture(type.getxStart(), duckSpawn, type.getPic2());
+        duck3 = new Picture(type.getxStart(), duckSpawn, type.getPic3());
         imageOrder = 0;
     }
 

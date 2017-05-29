@@ -8,7 +8,8 @@ import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.DuckRepresentation;
 public class Duck extends GameObjects {
 
     private DuckType type;
-    private int speed;
+    private int xSpeed;
+    private int ySpeed;
     private DuckRepresentation duckPicture;
     private boolean dead;
     private int killPoints;
@@ -20,11 +21,12 @@ public class Duck extends GameObjects {
 
     public Duck(DuckType type) {
         this.type = type;
-        this.speed = type.getSpeed();
+        this.xSpeed = type.getxSpeed();
+        this.ySpeed = type.getySpeed();
         this.killPoints = type.getKillPoints();
-        this.x = 0;
+        this.x = type.getxStart();
         this.y = duckSpawnY();
-        this.duckPicture = new DuckRepresentation(x, y, speed);
+        this.duckPicture = new DuckRepresentation(type, y);
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
 
@@ -55,7 +57,7 @@ public class Duck extends GameObjects {
     }
 
     public int getSpeed() {
-        return speed;
+        return xSpeed;
     }
 
     public void kill() {
@@ -82,9 +84,9 @@ public class Duck extends GameObjects {
 
     public void move() {
         if (!dead) {
-            duckPicture.move(speed);
-            x += speed;
-            xOffSet += speed;
+            duckPicture.move(xSpeed);
+            x += xSpeed;
+            xOffSet += xSpeed;
         }
 
     }
