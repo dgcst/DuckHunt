@@ -27,8 +27,8 @@ public class Game {
     }
 
     public void menu() throws InterruptedException {
-        Menu menu = new Menu();
-        menu.menuSelection();
+        //Menu menu = new Menu();
+        //menu.menuSelection();
         init();
         start();
     }
@@ -46,7 +46,7 @@ public class Game {
         }
         specials = new GameObjects[1];
         scoreInit();
-        welcomeMsg();
+        //welcomeMsg();
     }
 
     public void start() throws InterruptedException {

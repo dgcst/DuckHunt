@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 
 // Created by dgcst on 25/05/17
 
+import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
@@ -13,13 +14,19 @@ public class Gun {
     private GunController gunController;
     private int x;
     private int y;
+    private Sound sound;
 
     public Gun() {
         gunController = new GunController();
         bullets = 100;
+        sound = new Sound ("/resources/sounds/1.wav");
     }
 
     public void shoot() {
+
+        sound.play();
+        sound = new Sound ("/resources/sounds/1.wav");
+        System.out.println("Sound plays");
         bullets--;
     }
 
@@ -47,6 +54,7 @@ public class Gun {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+
             shoot();
             x = (int) e.getX();
             y = (int) e.getY();
