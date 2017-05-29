@@ -10,26 +10,29 @@ public class MenuRepresentation implements Representable {
     private Picture instructions;
     private Picture credits;
 
+    public MenuRepresentation() {
+        this.menuBackground = new Picture(0, 0, "images/menu/menuButtons.png");
+        this.menuLoading = new Picture(0,0, "images/menu/loading.png");
+        this.instructions = new Picture(0,0, "images/menu/instructions.png");
+        this.credits = new Picture(0,0, "images/menu/credits.png");
+    }
+
     @Override
     public void init() throws InterruptedException {
-        //menuLoading = new Picture(0,0, "images/menu/loading.png");
-        //menuLoading.draw();
-        //Thread.sleep(5000);
-        //menuLoading.delete();
+        menuLoading.draw();
+        Thread.sleep(1000);
+        menuLoading.delete();
         mainMenu();
     }
 
     public  void mainMenu() {
-        menuBackground = new Picture(0, 0, "images/menu/menuButtons.png");
         menuBackground.draw();
     }
     public void instructions() {
-        instructions = new Picture(0,0, "images/menu/instructions.png");
         instructions.draw();
     }
 
     public void credits() {
-        credits = new Picture(0,0, "images/menu/credits.png");
         credits.draw();
     }
 

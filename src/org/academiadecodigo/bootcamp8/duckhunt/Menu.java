@@ -28,6 +28,10 @@ public class Menu extends Game {
     private int creditsButtonY;
     private int creditsButtonXOffset;
     private int creditsButtonYOffset;
+    private int backButtonX;
+    private int backButtonY;
+    private int backButtonXOffset;
+    private int backButtonYOffset;
     private boolean specialScreen;
     private boolean menuSelection;
 
@@ -47,6 +51,10 @@ public class Menu extends Game {
         creditsButtonY = 701;
         creditsButtonXOffset = 807;
         creditsButtonYOffset = 768;
+        backButtonX = 20;
+        backButtonY = 720;
+        backButtonXOffset = 100;
+        backButtonYOffset = 900;
         menuSelection = false;
         specialScreen = false;
     }
@@ -68,12 +76,12 @@ public class Menu extends Game {
         while (!menuSelection) {
             Thread.sleep(1);
             if (specialScreen) {
-                specialScreen = false;
-                if ((getX() >= creditsButtonX && getX() <= creditsButtonXOffset) &&
-                        (getY() >= creditsButtonY && getY() <= creditsButtonYOffset)) {
+                if ((getX() >= backButtonX && getX() <= backButtonXOffset) &&
+                        (getY() >= backButtonY && getY() <= backButtonYOffset)) {
                     menuRepresentation.creditsDelete();
                     menuRepresentation.instructionsDelete();
-                    Thread.sleep(100);
+                    Thread.sleep(200);
+                    specialScreen = false;
                     mainMenu();
                 }
             }
