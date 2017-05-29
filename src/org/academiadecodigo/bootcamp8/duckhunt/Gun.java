@@ -24,9 +24,9 @@ public class Gun {
 
     public void shoot() {
 
-        sound.play();
-        sound = new Sound ("/resources/sounds/1.wav");
-        System.out.println("Sound plays");
+        sound.play(true);
+
+        //System.out.println("Sound plays");
         bullets--;
     }
 

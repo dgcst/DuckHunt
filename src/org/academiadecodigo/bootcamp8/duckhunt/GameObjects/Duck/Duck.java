@@ -19,7 +19,7 @@ public class Duck extends GameObjects {
     private int xOffSet;
     private int yOffSet;
     private static int duckSpawn = 0;
-    //private Sound sound;
+    private Sound sound;
 
     public Duck(DuckType type) {
         this.type = type;
@@ -31,7 +31,7 @@ public class Duck extends GameObjects {
         this.duckPicture = new DuckRepresentation(type, y);
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
-        //sound = new Sound ("/resources/sound/2.wav");
+        sound = new Sound ("/resources/sounds/4.wav");
 
     }
 
@@ -87,6 +87,7 @@ public class Duck extends GameObjects {
 
     public void move() {
         if (!dead) {
+            sound.play(false);
             duckPicture.move(xSpeed);
             x += xSpeed;
             xOffSet += xSpeed;

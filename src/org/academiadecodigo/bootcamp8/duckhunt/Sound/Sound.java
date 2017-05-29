@@ -15,8 +15,11 @@ public class Sound {
         initClip(path);
     }
 
-    public void play() {
+    public void play(boolean fromStart) {
 
+        if (fromStart) {
+            clip.setFramePosition(0);
+        }
         clip.start();
     }
 
