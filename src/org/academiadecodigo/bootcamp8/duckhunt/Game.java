@@ -38,6 +38,8 @@ public class Game {
         gameScore = 0;
         gameLevel = 1;
         gun = new Gun();
+        specials = new GameObjects[1];
+        specials[0] = GameObjectsFactory.getNewSpecialObject();
         ducks = new Duck[4];
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
@@ -58,10 +60,9 @@ public class Game {
             moveAllDucks();
             if (specials[0] != null){
             specialsMove();
-            level();
-            specials[0].move();
             }
-            
+
+            level();
             displayScore.draw();
         }
     }
@@ -72,7 +73,6 @@ public class Game {
                     ducks[i].getX() + ducks[i].getSpeed() <= 0) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
-
                 return;
             }
 
@@ -82,7 +82,6 @@ public class Game {
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
                 gun.resetX();gun.resetY();
-
                 return;
             }
 
