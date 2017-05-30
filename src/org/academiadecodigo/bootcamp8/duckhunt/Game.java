@@ -36,7 +36,6 @@ public class Game {
         field = new Field();
         gameScore = 0;
         gameLevel = 1;
-        gun = new Gun();
         specials = new GameObjects[1];
         specials[0] = GameObjectsFactory.getNewSpecialObject();
         ducks = new Duck[4];
@@ -46,13 +45,13 @@ public class Game {
         specials = new GameObjects[1];
         field.welcomeMsg();
         field.scoreInit(gameScore);
+        gun = new Gun();
     }
 
     public void start() throws InterruptedException {
         while (true) {
 
-            gun.resetX();
-            gun.resetY();
+            gun.resetX();gun.resetY();
             field.updateScore(gameScore);
             Thread.sleep(110);
 
@@ -76,7 +75,7 @@ public class Game {
                 return;
             }
 
-            if ((gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet())
+            if (gun.isLoaded() && gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet()
                     && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
@@ -117,7 +116,5 @@ public class Game {
             field.restoreDayMode();
         }
     }
-
-
 }
 

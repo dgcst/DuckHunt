@@ -4,6 +4,7 @@ package org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck;
 
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.DuckRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 
 public class Duck extends GameObjects {
 
@@ -18,6 +19,7 @@ public class Duck extends GameObjects {
     private int xOffSet;
     private int yOffSet;
     private static int duckSpawn = 0;
+    private Sound sound;
 
     public Duck(DuckType type) {
         this.type = type;
@@ -29,7 +31,9 @@ public class Duck extends GameObjects {
         this.duckPicture = new DuckRepresentation(type, y);
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
-
+        sound = new Sound ("/resources/sounds/duck.wav");
+        sound.setLoop(2);
+        sound.play(false);
     }
 
     public int getKillPoints() {
@@ -61,8 +65,10 @@ public class Duck extends GameObjects {
     }
 
     public void kill() {
+        sound.stop();
         dead = true;
         duckPicture.kill();
+
     }
 
     private int duckSpawnY() {
@@ -84,6 +90,7 @@ public class Duck extends GameObjects {
 
     public void move() {
         if (!dead) {
+
             duckPicture.move(xSpeed);
             x += xSpeed;
             xOffSet += xSpeed;

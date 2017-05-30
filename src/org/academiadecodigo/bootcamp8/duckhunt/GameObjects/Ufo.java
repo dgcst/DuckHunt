@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
 
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.UfoRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 
 /**
  * Created by prashanta on 27-05-2017.
@@ -13,7 +14,7 @@ public class Ufo extends GameObjects {
     private int y;
     private int xOffSet;
     private int yOffSet;
-
+    private Sound sound;
 
     public Ufo() {
         this.speed = 30;
@@ -22,9 +23,13 @@ public class Ufo extends GameObjects {
         this.ufoRep= new UfoRepresentation(y, speed);
         this.xOffSet = x + ufoRep.getOffsetX();
         this.yOffSet = y + ufoRep.getOffsetY();
+        sound = new Sound ("/resources/sounds/ufo.wav");
+
+
 
     }
     public void move(){
+        sound.play(false);
         if (!dead) {
             ufoRep.move(speed);
             x +=  speed;
@@ -35,6 +40,7 @@ public class Ufo extends GameObjects {
     }
 
     public void kill() {
+        sound.stop();
         dead = true;
         ufoRep.kill();
     }
