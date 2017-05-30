@@ -22,4 +22,28 @@ public class Field {
     public int getHeigth() {
         return heigth;
     }
+
+    public void welcomeMsg() throws InterruptedException {
+        background.welcomeMsg();
+    }
+
+    public void scoreInit(Integer score){
+        background.scoreInit(score);
+    }
+
+    public void drawScore(){
+        background.drawScore();
+    }
+
+    public void updateScore(Integer newScore){
+        background.updateScore(newScore);
+    }
+
+    public void setNigthMode(){
+        background.setNightMode();
+    }
+
+    public void restoreDayMode(){
+        background.dayMode();
+    }
 }

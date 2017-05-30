@@ -18,7 +18,6 @@ public class Game {
     private Gun gun;
     private Field field;
     private Integer gameScore;
-    private Text displayScore;
     private int gameLevel;
     private static int levelUp = 1500;
 
@@ -27,12 +26,10 @@ public class Game {
     }
 
     public void menu() throws InterruptedException {
-        //Menu menu = new Menu();
-        //menu.menuSelection();
+        Menu menu = new Menu();
+        menu.menuSelection();
         init();
         start();
-        //canvas.repaint();
-
     }
 
     public void init() throws InterruptedException {
@@ -47,8 +44,8 @@ public class Game {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
-        scoreInit();
-        //welcomeMsg();
+        field.welcomeMsg();
+        field.scoreInit(gameScore);
     }
 
     public void start() throws InterruptedException {
@@ -56,7 +53,7 @@ public class Game {
 
             gun.resetX();
             gun.resetY();
-            displayScore.setText("Score: " + gameScore.toString());
+            field.updateScore(gameScore);
             Thread.sleep(110);
 
             moveAllDucks();
@@ -64,8 +61,9 @@ public class Game {
             specialsMove();
             }
 
+            nightMode();
             level();
-            displayScore.draw();
+            field.drawScore();
         }
     }
 
@@ -112,31 +110,12 @@ public class Game {
         }
     }
 
-    public void welcomeMsg() throws InterruptedException {
-        Text text = new Text(580, 100, "Welcome to the VEGAN Duck Hunt");
-        text.setColor(Color.BLACK);
-        text.grow(400, 70);
-        text.draw();
-        Thread.sleep(3000);
-        text.delete();
-        Text text1 = new Text(600, 200, "Get Ready...");
-        text1.setColor(Color.BLACK);
-        text1.grow(200, 50);
-        text1.draw();
-        Thread.sleep(2000);
-        text1.delete();
-        Text text2 = new Text(600, 300, "GO!");
-        text2.setColor(Color.BLACK);
-        text2.grow(100, 25);
-        text2.draw();
-        Thread.sleep(1000);
-        text2.delete();
-    }
-
-    public void scoreInit() {
-        displayScore = new Text(120, 750, "Score: " + gameScore.toString());
-        displayScore.setColor(Color.BLACK);
-        displayScore.grow(80, 20);
+    public void nightMode(){
+        if (gameLevel % 5 == 0){
+            field.setNigthMode();
+        } else {
+            field.restoreDayMode();
+        }
     }
 }
 
