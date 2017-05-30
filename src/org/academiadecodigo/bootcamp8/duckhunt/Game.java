@@ -31,6 +31,8 @@ public class Game {
         //menu.menuSelection();
         init();
         start();
+        //canvas.repaint();
+
     }
 
     public void init() throws InterruptedException {

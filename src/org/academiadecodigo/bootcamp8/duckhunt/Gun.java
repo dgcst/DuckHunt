@@ -38,6 +38,9 @@ public class Gun {
     }
     public void resetY(){ y = -1;}
 
+
+
+
     private class GunController implements MouseHandler {
         private Mouse mouse;
 
