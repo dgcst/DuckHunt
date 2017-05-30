@@ -19,19 +19,26 @@ public class Gun {
         bullets = 100;
     }
 
-    public void shoot() {
-        bullets--;
-    }
+
 
     public int getX() {
         return x;
     }
+
     public void resetX(){ x = -1;}
 
     public int getY() {
         return y;
     }
+
     public void resetY(){ y = -1;}
+
+
+    public void shoot() {
+        bullets--;
+    }
+
+
 
     private class GunController implements MouseHandler {
         private Mouse mouse;
