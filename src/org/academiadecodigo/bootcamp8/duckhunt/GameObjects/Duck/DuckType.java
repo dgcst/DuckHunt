@@ -46,7 +46,7 @@ public enum DuckType {
         return ySpeed;
     }
 
-    public int getKillPoints() {
+    public Integer getKillPoints() {
         return killPoints;
     }
 
