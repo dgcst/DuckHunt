@@ -1,19 +1,17 @@
 package org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck;
 // Created by dgcst on 25/05/17
 
-import org.academiadecodigo.bootcamp8.duckhunt.Field;
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.FieldRepresentation;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public enum DuckType {
-    NORMAL(0, 20, 0, 100, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
-    FAST(0, 40, 0, 200, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
-    SLOW(0, 10, 0, 10, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
-    SPECIAL(0, 50, 0, 1000, "images/duck1.png", "images/duck2.png", "images/duck3.png"),
-    REVNORMAL(FieldRepresentation.getFieldWidth()-120, -20, 0, 100, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png" ),
-    REVFAST(FieldRepresentation.getFieldWidth()-120, -40, 0, 200, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png"),
-    REVSLOW(FieldRepresentation.getFieldWidth()-120, -10, 0, 10, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png"),
-    REVSPECIAL(FieldRepresentation.getFieldWidth()-120, -50, 0, 1000, "images/duck1-flipped.png", "images/duck2-flipped.png", "images/duck3-flipped.png");
+    NORMAL(0, 20, 0, 100, "resources/images/game/duck_normal/duck1.png", "resources/images/game/duck_normal/duck2.png", "resources/images/game/duck_normal/duck3.png"),
+    FAST(0, 40, 0, 200, "resources/images/game/duck_fast/duck1.png", "resources/images/game/duck_fast/duck2.png", "resources/images/game/duck_fast/duck3.png"),
+    SLOW(0, 10, 0, 10, "resources/images/game/duck_slow/duck1.png", "resources/images/game/duck_slow/duck2.png", "resources/images/game/duck_slow/duck3.png"),
+    SPECIAL(0, 50, 0, 1000, "resources/images/game/duck_normal/duck1.png", "resources/images/game/duck_normal/duck2.png", "resources/images/game/duck_normal/duck3.png"),
+    REVNORMAL(FieldRepresentation.getFieldWidth()-120, -20, 0, 100, "resources/images/game/duck_normal/duck1-flipped.png", "resources/images/game/duck_normal/duck2-flipped.png", "resources/images/game/duck_normal/duck3-flipped.png"),
+    REVFAST(FieldRepresentation.getFieldWidth()-120, -40, 0, 200, "resources/images/game/duck_fast/duck1-flipped.png", "resources/images/game/duck_fast/duck2-flipped.png", "resources/images/game/duck_fast/duck3-flipped.png"),
+    REVSLOW(FieldRepresentation.getFieldWidth()-120, -10, 0, 10, "resources/images/game/duck_slow/duck1-flipped.png", "resources/images/game/duck_slow/duck2-flipped.png", "resources/images/game/duck_slow/duck3-flipped.png"),
+    REVSPECIAL(FieldRepresentation.getFieldWidth()-120, -50, 0, 1000, "resources/images/game/duck_normal/duck1-flipped.png", "resources/images/game/duck_normal/duck2-flipped.png", "resources/images/game/duck_normal/duck3-flipped.png");
 
     //120 value above in REV ducks is the length of the picture of the Duck to be used. Update accordingly if pic chance
     private int xStart;

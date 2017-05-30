@@ -15,8 +15,8 @@ public class FieldRepresentation implements Representable {
 
     @Override
     public void init() {
-        background = new Picture(0,0, "images/background-up-clouds.png");
-        nightMode = new Picture(0, 0, "images/background-up-night.png");
+        background = new Picture(0,0, "resources/images/game/background/background-up-clouds.png");
+        nightMode = new Picture(0, 0, "resources/images/game/background/background-up-night.png");
         fieldWidth = background.getWidth();
         background.draw();
     }

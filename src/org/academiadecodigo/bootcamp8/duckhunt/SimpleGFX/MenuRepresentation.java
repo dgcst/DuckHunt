@@ -11,10 +11,10 @@ public class MenuRepresentation implements Representable {
     private Picture credits;
 
     public MenuRepresentation() {
-        this.menuBackground = new Picture(0, 0, "images/menu/menuButtons.png");
-        this.menuLoading = new Picture(0,0, "images/menu/loading.png");
-        this.instructions = new Picture(0,0, "images/menu/instructions.png");
-        this.credits = new Picture(0,0, "images/menu/credits.png");
+        this.menuBackground = new Picture(0, 0, "resources/images/menu/menuButtons.png");
+        this.menuLoading = new Picture(0,0, "resources/images/menu/loading.png");
+        this.instructions = new Picture(0,0, "resources/images/menu/instructions.png");
+        this.credits = new Picture(0,0, "resources/images/menu/credits.png");
     }
 
     @Override

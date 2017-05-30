@@ -13,7 +13,7 @@ public class UfoRepresentation implements MovableRepresentable {
 
 
     public UfoRepresentation(int y, int speed) {
-        ufo = new Picture(0, y, "images/ufo-down.png");
+        ufo = new Picture(0, y, "resources/images/game//ufo-down.png");
         moveFactor = 0;
     }
 
