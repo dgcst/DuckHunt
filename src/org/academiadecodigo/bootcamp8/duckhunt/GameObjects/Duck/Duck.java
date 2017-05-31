@@ -68,7 +68,6 @@ public class Duck extends GameObjects {
         sound.stop();
         dead = true;
         duckPicture.kill();
-
     }
 
     private int duckSpawnY() {

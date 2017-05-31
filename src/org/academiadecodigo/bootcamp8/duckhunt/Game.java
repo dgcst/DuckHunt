@@ -11,7 +11,6 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 
 
 public class Game {
-
     private Canvas canvas;
     private Duck[] ducks;
     private GameObjects[] specials;
@@ -64,6 +63,7 @@ public class Game {
             level();
             field.drawScore();
         }
+
     }
 
     public void moveAllDucks() throws InterruptedException {

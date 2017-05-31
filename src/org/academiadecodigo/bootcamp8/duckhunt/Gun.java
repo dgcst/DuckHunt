@@ -61,6 +61,7 @@ public class Gun {
         return loaded;
     }
 
+    
     private class GunController implements MouseHandler {
         private Mouse mouse;
 
