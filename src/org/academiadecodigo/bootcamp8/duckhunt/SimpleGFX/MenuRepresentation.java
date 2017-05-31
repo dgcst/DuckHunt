@@ -19,15 +19,15 @@ public class MenuRepresentation implements Representable {
         this.instructions = new Picture(0,0, "resources/images/menu/instructions.png");
         this.credits = new Picture(0,0, "resources/images/menu/credits.png");
         loading = new Sound("/resources/sounds/boot.wav");
-        menu = new Sound("/resources/sounds/menu_music.wav");
+
     }
 
     @Override
     public void init() throws InterruptedException {
         menuLoading.draw();
-        Thread.sleep(500);
+        Thread.sleep(600);
         loading.play(true);
-        Thread.sleep(5800);
+        Thread.sleep(5500);
         menuLoading.delete();
     }
 
@@ -40,6 +40,7 @@ public class MenuRepresentation implements Representable {
     }
 
     public void menuSound() {
+        menu = new Sound("/resources/sounds/menu_music.wav");
         menu.setLoop(10);
         menu.play(true);
     }

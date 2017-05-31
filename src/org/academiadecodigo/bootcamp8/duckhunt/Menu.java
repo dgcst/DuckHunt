@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp8.duckhunt;
 
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.MenuRepresentation;
-import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
