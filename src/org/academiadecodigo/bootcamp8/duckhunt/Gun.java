@@ -13,12 +13,13 @@ public class Gun {
 
     private GunController gunController;
     private BulletsRepresentation bulletPic;
-    private static final int maxBullets = 16;
+    private static final int maxBullets = 12;
     private int currBullets;
     private boolean loaded;
     private int x;
     private int y;
     private Sound sound;
+    private Sound reload;
 
     public Gun() {
         gunController = new GunController();
@@ -26,22 +27,27 @@ public class Gun {
         currBullets = maxBullets;
         loaded = true;
         sound = new Sound ("/resources/sounds/gun3.wav");
+        reload = new Sound ("/resources/sounds/reload.wav");
+
     }
 
     public void shoot() {
         if (currBullets == 0){
             loaded = false;
         }
+        if ((x >= bulletPic.getXReload() && x <= bulletPic.getXOffSetReload()
+                && y >= bulletPic.getYReload() && y <= bulletPic.getYOffSetReload()
+                && currBullets != maxBullets)) {
+            reload.play(true);
+            bulletPic.drawBullets();
+            currBullets = maxBullets;
+            loaded = true;
+            return;
+        }
         if(currBullets > 0){
             bulletPic.shoot();
             sound.play(true);
             currBullets--;
-        }
-        if (x >= bulletPic.getXReload() && x <= bulletPic.getXOffSetReload()
-                && y >= bulletPic.getYReload() && y <= bulletPic.getYOffSetReload()) {
-            bulletPic.drawBullets();
-            currBullets = maxBullets;
-            loaded = true;
         }
 
     }

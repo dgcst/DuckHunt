@@ -33,6 +33,7 @@ public class Game {
 
     public void init() throws InterruptedException {
         field = new Field();
+        gun = new Gun();
         gameScore = 0;
         gameLevel = 1;
         specials = new GameObjects[1];
@@ -42,9 +43,8 @@ public class Game {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
-        field.welcomeMsg();
         field.scoreInit(gameScore);
-        gun = new Gun();
+
     }
 
     public void start() throws InterruptedException {
