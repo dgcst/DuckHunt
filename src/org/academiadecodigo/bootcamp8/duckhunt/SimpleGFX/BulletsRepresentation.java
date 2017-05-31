@@ -39,7 +39,7 @@ public class BulletsRepresentation implements Representable{
 
     public void drawBullets() {
         for (int i = currBulletIndex; i < maxBullets; i++) {
-            pic1[i] = new Picture(200 + (40 * i), FieldRepresentation.getFieldHeight() - 20, "resources/images/game/bullet.png");
+            pic1[i] = new Picture(200 + (40 * i), FieldRepresentation.getFieldHeight() - 100, "resources/images/game/bullet.png");
             pic1[i].draw();
         }
         currBulletIndex = maxBullets - 1;
