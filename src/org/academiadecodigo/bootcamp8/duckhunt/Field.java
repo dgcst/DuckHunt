@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp8.duckhunt;
 
-// Created by dgcst on 25/05/17
-
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.FieldRepresentation;
 
 public class Field {
@@ -23,5 +21,29 @@ public class Field {
 
     public int getHeigth() {
         return heigth;
+    }
+
+    public void welcomeMsg() throws InterruptedException {
+        background.welcomeMsg();
+    }
+
+    public void scoreInit(Integer score){
+        background.scoreInit(score);
+    }
+
+    public void drawScore(){
+        background.drawScore();
+    }
+
+    public void updateScore(Integer newScore){
+        background.updateScore(newScore);
+    }
+
+    public void setNigthMode(){
+        background.setNightMode();
+    }
+
+    public void restoreDayMode(){
+        background.dayMode();
     }
 }

@@ -4,11 +4,13 @@ package org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck;
 
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.DuckRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 
 public class Duck extends GameObjects {
 
     private DuckType type;
-    private int speed;
+    private int xSpeed;
+    private int ySpeed;
     private DuckRepresentation duckPicture;
     private boolean dead;
     private int killPoints;
@@ -16,18 +18,22 @@ public class Duck extends GameObjects {
     private int y;
     private int xOffSet;
     private int yOffSet;
-    public static int duckSpawn = 0;
+    private static int duckSpawn = 0;
+    private Sound sound;
 
     public Duck(DuckType type) {
         this.type = type;
-        this.speed = type.getSpeed();
+        this.xSpeed = type.getxSpeed();
+        this.ySpeed = type.getySpeed();
         this.killPoints = type.getKillPoints();
-        this.x = 0;
+        this.x = type.getxStart();
         this.y = duckSpawnY();
-        this.duckPicture = new DuckRepresentation(y, 0);
+        this.duckPicture = new DuckRepresentation(type, y);
         this.xOffSet = x + duckPicture.getOffsetX();
         this.yOffSet = y + duckPicture.getOffsetY();
-
+        sound = new Sound ("/resources/sounds/duck.wav");
+        sound.setLoop(2);
+        sound.play(false);
     }
 
     public int getKillPoints() {
@@ -55,16 +61,18 @@ public class Duck extends GameObjects {
     }
 
     public int getSpeed() {
-        return speed;
+        return xSpeed;
     }
 
     public void kill() {
+        sound.stop();
         dead = true;
         duckPicture.kill();
+
     }
 
     private int duckSpawnY() {
-        if(duckSpawn == 0){
+        if (duckSpawn == 0) {
             duckSpawn++;
             return 40;
         }
@@ -80,11 +88,13 @@ public class Duck extends GameObjects {
         return 400;
     }
 
-    public void move(){
+    public void move() {
         if (!dead) {
-            duckPicture.move(speed);
-            //x +=  speed;
-            xOffSet += speed;
+
+            duckPicture.move(xSpeed);
+            x += xSpeed;
+            xOffSet += xSpeed;
         }
+
     }
 }
