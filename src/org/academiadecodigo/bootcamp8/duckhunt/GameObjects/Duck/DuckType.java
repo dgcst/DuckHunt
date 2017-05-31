@@ -1,9 +1,9 @@
 package org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck;
 // Created by dgcst on 25/05/17
 
-import org.academiadecodigo.bootcamp8.duckhunt.Field;
+
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.FieldRepresentation;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 
 public enum DuckType {
     NORMAL(0, 20, 0, 100, "images/duck1.png", "images/duck2.png", "images/duck3.png"),

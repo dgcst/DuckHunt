@@ -18,6 +18,7 @@ public class BulletsRepresentation implements Representable{
 
     public BulletsRepresentation(int maxBullets){
         this.maxBullets = maxBullets;
+        pic1 = new Picture[this.maxBullets];
         init();
     }
 
@@ -36,7 +37,6 @@ public class BulletsRepresentation implements Representable{
     }
 
     public void drawBullets() {
-        pic1 = new Picture[maxBullets];
         for (int i = currBulletIndex; i < maxBullets; i++) {
             pic1[i] = new Picture(200 + (40 * i), 500, "images/bullet.png");
             pic1[i].grow(-150, -220);
@@ -47,7 +47,9 @@ public class BulletsRepresentation implements Representable{
 
     public void shoot(){
         pic1[currBulletIndex].delete();
-        currBulletIndex--;
+        if (currBulletIndex > 0){
+            currBulletIndex--;
+        }
     }
 
     //+8 value to offset small mouse discrepancy found in SimpleGFX in X position

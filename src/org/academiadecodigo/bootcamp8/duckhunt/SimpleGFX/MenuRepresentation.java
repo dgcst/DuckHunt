@@ -28,6 +28,7 @@ public class MenuRepresentation implements Representable {
     public  void mainMenu() {
         menuBackground.draw();
     }
+
     public void instructions() {
         instructions.draw();
     }
