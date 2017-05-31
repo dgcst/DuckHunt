@@ -166,11 +166,11 @@ public class Menu extends Game {
 
     public void loading() throws InterruptedException {
         menuRepresentation.init();
+        menuRepresentation.menuSound();
         mainMenu();
     }
 
     public void mainMenu() {
-        menuRepresentation.menuSound();
         menuRepresentation.mainMenu();
     }
 
