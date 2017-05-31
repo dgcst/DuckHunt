@@ -37,8 +37,8 @@ public class Gun {
             sound.play(true);
             currBullets--;
         }
-        if (x >= bulletPic.getXReload() && x <= bulletPic.getXReload() + bulletPic.getXOffSetReload()
-                && y >= bulletPic.getYReload() && y <= bulletPic.getYReload() + bulletPic.getYOffSetReload()) {
+        if (x >= bulletPic.getXReload() && x <= bulletPic.getXOffSetReload()
+                && y >= bulletPic.getYReload() && y <= bulletPic.getYOffSetReload()) {
             bulletPic.drawBullets();
             currBullets = maxBullets;
             loaded = true;
@@ -62,6 +62,7 @@ public class Gun {
         return loaded;
     }
 
+    
     private class GunController implements MouseHandler {
         private Mouse mouse;
 

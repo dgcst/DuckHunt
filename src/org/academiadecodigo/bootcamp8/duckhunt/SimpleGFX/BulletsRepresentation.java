@@ -19,6 +19,7 @@ public class BulletsRepresentation implements Representable{
 
     public BulletsRepresentation(int maxBullets){
         this.maxBullets = maxBullets;
+        pic1 = new Picture[this.maxBullets];
         init();
     }
 
@@ -37,7 +38,6 @@ public class BulletsRepresentation implements Representable{
     }
 
     public void drawBullets() {
-        pic1 = new Picture[maxBullets];
         for (int i = currBulletIndex; i < maxBullets; i++) {
             pic1[i] = new Picture(200 + (40 * i), FieldRepresentation.getFieldHeight() - 20, "resources/images/game/bullet.png");
             pic1[i].draw();
@@ -47,7 +47,7 @@ public class BulletsRepresentation implements Representable{
 
     public void shoot(){
         pic1[currBulletIndex].delete();
-        if (currBulletIndex > 0) {
+        if (currBulletIndex > 0){
             currBulletIndex--;
         }
     }
@@ -63,10 +63,10 @@ public class BulletsRepresentation implements Representable{
     }
 
     public int getXOffSetReload(){
-        return reloadButton.getWidth();
+        return reloadButton.getWidth() + getXReload();
     }
 
     public int getYOffSetReload(){
-        return reloadButton.getHeight();
+        return reloadButton.getHeight() + getYReload();
     }
 }

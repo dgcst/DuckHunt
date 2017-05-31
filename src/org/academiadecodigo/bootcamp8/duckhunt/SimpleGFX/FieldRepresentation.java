@@ -57,19 +57,19 @@ public class FieldRepresentation implements Representable {
         text.setColor(Color.BLACK);
         text.grow(400, 70);
         text.draw();
-        Thread.sleep(3000);
+        Thread.sleep(2500);
         text.delete();
         Text text1 = new Text(600, 200, "Get Ready...");
         text1.setColor(Color.BLACK);
         text1.grow(200, 50);
         text1.draw();
-        Thread.sleep(2000);
+        Thread.sleep(1500);
         text1.delete();
         Text text2 = new Text(600, 300, "GO!");
         text2.setColor(Color.BLACK);
         text2.grow(100, 25);
         text2.draw();
-        Thread.sleep(1000);
+        Thread.sleep(800);
         text2.delete();
     }
 

@@ -1,9 +1,7 @@
 package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
 import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
-import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
