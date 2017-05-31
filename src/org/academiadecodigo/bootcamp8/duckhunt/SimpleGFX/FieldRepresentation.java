@@ -8,6 +8,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class FieldRepresentation implements Representable {
     private static int fieldWidth;
+    private static int fieldHeight;
     private Picture background;
     private Picture nightMode;
     private Text displayScore;
@@ -18,6 +19,7 @@ public class FieldRepresentation implements Representable {
         background = new Picture(0,0, "resources/images/game/background/background-up-clouds.png");
         nightMode = new Picture(0, 0, "resources/images/game/background/background-up-night.png");
         fieldWidth = background.getWidth();
+        fieldHeight = background.getHeight();
         background.draw();
     }
 
@@ -36,6 +38,10 @@ public class FieldRepresentation implements Representable {
 
     public static int getFieldWidth(){
         return fieldWidth;
+    }
+
+    public static int getFieldHeight() {
+        return fieldHeight;
     }
 
     public int getWidth() {

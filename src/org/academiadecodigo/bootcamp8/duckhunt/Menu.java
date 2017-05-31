@@ -1,14 +1,11 @@
 package org.academiadecodigo.bootcamp8.duckhunt;
 
 import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.MenuRepresentation;
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import javax.sound.midi.SoundbankResource;
 
 public class Menu extends Game {
 
@@ -38,7 +35,7 @@ public class Menu extends Game {
     public Menu() throws InterruptedException {
         menuMouse = new MenuMouse();
         menuRepresentation = new MenuRepresentation();
-        menuRepresentation.init();
+        loading();
         playButtonX = 453;
         playButtonXOffset = 747;
         playButtonY = 518;
@@ -67,6 +64,70 @@ public class Menu extends Game {
         return y;
     }
 
+    public int getPlayButtonX() {
+        return playButtonX;
+    }
+
+    public int getPlayButtonY() {
+        return playButtonY;
+    }
+
+    public int getPlayButtonXOffset() {
+        return playButtonXOffset;
+    }
+
+    public int getPlayButtonYOffset() {
+        return playButtonYOffset;
+    }
+
+    public int getInstructionsButtonX() {
+        return instructionsButtonX;
+    }
+
+    public int getInstructionsButtonY() {
+        return instructionsButtonY;
+    }
+
+    public int getInstructionsButtonXOffset() {
+        return instructionsButtonXOffset;
+    }
+
+    public int getInstructionsButtonYOffset() {
+        return instructionsButtonYOffset;
+    }
+
+    public int getCreditsButtonX() {
+        return creditsButtonX;
+    }
+
+    public int getCreditsButtonY() {
+        return creditsButtonY;
+    }
+
+    public int getCreditsButtonXOffset() {
+        return creditsButtonXOffset;
+    }
+
+    public int getCreditsButtonYOffset() {
+        return creditsButtonYOffset;
+    }
+
+    public int getBackButtonX() {
+        return backButtonX;
+    }
+
+    public int getBackButtonY() {
+        return backButtonY;
+    }
+
+    public int getBackButtonXOffset() {
+        return backButtonXOffset;
+    }
+
+    public int getBackButtonYOffset() {
+        return backButtonYOffset;
+    }
+
     public boolean isMenuSelection() {
         return menuSelection;
     }
@@ -76,8 +137,8 @@ public class Menu extends Game {
         while (!menuSelection) {
             Thread.sleep(1);
             if (specialScreen) {
-                if ((getX() >= backButtonX && getX() <= backButtonXOffset) &&
-                        (getY() >= backButtonY && getY() <= backButtonYOffset)) {
+                if ((getX() >= getBackButtonX() && getX() <= getBackButtonXOffset()) &&
+                        (getY() >= getBackButtonY() && getY() <= getBackButtonYOffset())) {
                     menuRepresentation.creditsDelete();
                     menuRepresentation.instructionsDelete();
                     Thread.sleep(200);
@@ -85,25 +146,32 @@ public class Menu extends Game {
                     mainMenu();
                 }
             }
-            if ((getX() >= playButtonX && getX() <= playButtonXOffset) &&
-                    (getY() >= playButtonY && getY() <= playButtonYOffset)) {
+            if ((getX() >= getPlayButtonX() && getX() <= getPlayButtonXOffset()) &&
+                    (getY() >= getPlayButtonY() && getY() <= getPlayButtonYOffset())) {
+                menuRepresentation.stopMenuSound();
                 menuSelection = true;
             }
-            if ((getX() >= instructionsButtonX && getX() <= instructionsButtonXOffset) &&
-                    (getY() >= instructionsButtonY && getY() <= instructionsButtonYOffset)) {
+            if ((getX() >= getInstructionsButtonX() && getX() <= getInstructionsButtonXOffset()) &&
+                    (getY() >= getInstructionsButtonY() && getY() <= getInstructionsButtonYOffset())) {
                 specialScreen = true;
                 instructions();
 
             }
-            if ((getX() >= creditsButtonX && getX() <= creditsButtonXOffset) &&
-                    (getY() >= creditsButtonY && getY() <= creditsButtonYOffset)) {
+            if ((getX() >= getCreditsButtonX() && getX() <= getCreditsButtonXOffset()) &&
+                    (getY() >= getCreditsButtonY() && getY() <= getCreditsButtonYOffset())) {
                 specialScreen = true;
                 credits();
             }
         }
     }
 
+    public void loading() throws InterruptedException {
+        menuRepresentation.init();
+        mainMenu();
+    }
+
     public void mainMenu() {
+        menuRepresentation.menuSound();
         menuRepresentation.mainMenu();
     }
 

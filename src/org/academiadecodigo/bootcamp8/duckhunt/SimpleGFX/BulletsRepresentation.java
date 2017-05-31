@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 
+import org.academiadecodigo.bootcamp8.duckhunt.Field;
 import org.academiadecodigo.bootcamp8.duckhunt.Representable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -38,7 +39,7 @@ public class BulletsRepresentation implements Representable{
     public void drawBullets() {
         pic1 = new Picture[maxBullets];
         for (int i = currBulletIndex; i < maxBullets; i++) {
-            pic1[i] = new Picture(200 + (40 * i), 500, "resources/images/game/bullet.png");
+            pic1[i] = new Picture(200 + (40 * i), FieldRepresentation.getFieldHeight() - 20, "resources/images/game/bullet.png");
             pic1[i].draw();
         }
         currBulletIndex = maxBullets - 1;
@@ -46,7 +47,9 @@ public class BulletsRepresentation implements Representable{
 
     public void shoot(){
         pic1[currBulletIndex].delete();
-        currBulletIndex--;
+        if (currBulletIndex > 0) {
+            currBulletIndex--;
+        }
     }
 
     //+8 value to offset small mouse discrepancy found in SimpleGFX in X position

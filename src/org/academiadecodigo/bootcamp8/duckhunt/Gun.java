@@ -33,6 +33,7 @@ public class Gun {
             loaded = false;
         }
         if(currBullets > 0){
+            bulletPic.shoot();
             sound.play(true);
             currBullets--;
         }
