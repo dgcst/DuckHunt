@@ -30,6 +30,7 @@ public class Game {
     }
 
     public void menu() throws InterruptedException {
+        exit = false;
         menu = new Menu();
         menu.menuSelection();
         init();
@@ -56,8 +57,7 @@ public class Game {
     public void start() throws InterruptedException {
         while (!exit) {
 
-            gun.resetX();
-            gun.resetY();
+            gun.resetX();gun.resetY();
             field.updateScore(gameScore);
             Thread.sleep(110);
 
@@ -91,8 +91,7 @@ public class Game {
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
-                gun.resetX();
-                gun.resetY();
+                gun.resetX();gun.resetY();
                 return;
             }
 
