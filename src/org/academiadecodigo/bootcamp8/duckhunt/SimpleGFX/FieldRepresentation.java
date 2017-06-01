@@ -34,7 +34,6 @@ public class FieldRepresentation implements Representable {
     public void setNightMode() {
         if (!nightModeOn) {
             nightModeOn = true;
-            background.delete();
             nightMode.draw();
         }
     }
@@ -43,7 +42,6 @@ public class FieldRepresentation implements Representable {
         if (nightModeOn) {
             nightModeOn = false;
             nightMode.delete();
-            background.draw();
         }
     }
 
@@ -78,13 +76,13 @@ public class FieldRepresentation implements Representable {
     }
 
     public void gameOver() throws InterruptedException {
-        Picture gameOver = new Picture();
+        Picture gameOver = new Picture(0, 0, "resources/images/menu/gameover.png");
         gameOver.draw();
         Thread.sleep(2000);
     }
 
     public void scoreInit(Integer score) {
-        displayScore = new Text(964, 735, score.toString());
+        displayScore = new Text(964, 736, score.toString());
         displayScore.setColor(Color.WHITE);
         displayScore.grow(13, 13);
     }

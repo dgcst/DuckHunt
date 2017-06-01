@@ -17,13 +17,13 @@ public class GameObjectsFactory {
             case FAST:
                 return new Duck(DuckType.FAST);
             case SPECIAL:
-                if (Math.random() < 0.8){
+                if (Math.random() < 0.7){
                     return new Duck(DuckType.NORMAL);
                 } else {
                     return new Duck(DuckType.SPECIAL);
                 }
-            case WHITEDUCK:
-                return new Duck(DuckType.WHITEDUCK);
+            case RUBBER:
+                return new Duck(DuckType.RUBBER);
             case REVSLOW:
                 return new Duck(DuckType.REVSLOW);
             case REVNORMAL:
@@ -31,26 +31,28 @@ public class GameObjectsFactory {
             case REVFAST:
                 return new Duck(DuckType.REVFAST);
             case REVSPECIAL:
-                if (Math.random() < 0.8){
+                if (Math.random() < 0.7){
                     return new Duck(DuckType.REVNORMAL);
                 } else {
                     return new Duck(DuckType.REVSPECIAL);
                 }
-            case REVWHITEDUCK:
-                return new Duck(DuckType.REVWHITEDUCK);
+            case REVRUBBER:
+                return new Duck(DuckType.REVRUBBER);
         }
         return new Duck(DuckType.NORMAL);
     }
 
-    //Factory for other game objects not ducks with special features
+
     public static GameObjects getNewSpecialObject(){
-        int random = (int) (Math.random() * GameObjectsType.values().length);
-        GameObjectsType specialType = GameObjectsType.values()[random];
+        int random = (int) (Math.random() * SpecialsType.values().length);
+        SpecialsType specialType = SpecialsType.values()[random];
 
         switch (specialType) {
             case UFO:
-                return new Ufo();
+                return new Special(SpecialsType.UFO);
+            case CATARINA:
+                return new Special(SpecialsType.CATARINA);
         }
-        return new Ufo();
+        return new Special(SpecialsType.CATARINA);
     }
 }
