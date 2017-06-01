@@ -31,7 +31,6 @@ public class Game {
     }
 
     public void menu() throws InterruptedException {
-        gun = null;
         exit = false;
         menu = new Menu();
         menu.menuSelection();
@@ -57,6 +56,7 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
+        gun.enableGun();
         while (!exit) {
 
             gun.resetX();gun.resetY();
@@ -72,7 +72,7 @@ public class Game {
             level();
             field.drawScore();
         }
-
+        gun.silenceGun();
         menu();
     }
 
@@ -134,8 +134,9 @@ public class Game {
 
     public void gameOver() throws InterruptedException {
         field.gameOver();
+
         exit = true;
-        menu();
+        //menu();
     }
 
     private class Controller implements KeyboardHandler {

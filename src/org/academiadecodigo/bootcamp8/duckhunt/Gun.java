@@ -20,6 +20,7 @@ public class Gun {
     private int y;
     private Sound sound;
     private Sound reload;
+    private boolean isSilent;
 
     public Gun() {
         gunController = new GunController();
@@ -28,10 +29,20 @@ public class Gun {
         loaded = true;
         sound = new Sound ("/resources/sounds/gun3.wav");
         reload = new Sound ("/resources/sounds/reload.wav");
+    }
 
+    public void silenceGun(){
+        isSilent = true;
+    }
+
+    public void enableGun(){
+        isSilent = false;
     }
 
     public void shoot() {
+        if (isSilent){
+            return;
+        }
         if (currBullets == 0){
             loaded = false;
         }
