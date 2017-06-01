@@ -19,5 +19,7 @@ public abstract class GameObjects {
 
     public abstract int getYOffSet();
 
-    public abstract int getSpeed();
+    public abstract int getXSpeed();
+
+    public abstract int getYSpeed();
 }

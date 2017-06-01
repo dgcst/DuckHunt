@@ -30,13 +30,13 @@ public class UfoRepresentation implements MovableRepresentable {
     }
 
     @Override
-    public void move(int speed) {
+    public void move(int xSpeed, int ySpeed) {
         if (!dead) {
             if (moveFactor == 0){
                 ufo.draw();
                 moveFactor = 1;
             } else {
-                ufo.translate(speed, -25);
+                ufo.translate(xSpeed, ySpeed);
             }
         }
     }

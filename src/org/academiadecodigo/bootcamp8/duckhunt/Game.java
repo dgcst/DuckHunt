@@ -6,8 +6,6 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
 
 
 public class Game {
@@ -68,7 +66,7 @@ public class Game {
 
     public void moveAllDucks() throws InterruptedException {
         for (int i = 0; i < ducks.length; i++) {
-            if (ducks[i].getXOffSet() + ducks[i].getSpeed() >= field.getWidth() ||
+            if (ducks[i].getXOffSet() + ducks[i].getXSpeed() >= field.getWidth() ||
                     ducks[i].getXOffSet() < 0) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
@@ -92,7 +90,7 @@ public class Game {
 
     public void specialsMove(){
         int i = 0;
-        if (specials[i].getXOffSet() + specials[i].getSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
+        if (specials[i].getXOffSet() + specials[i].getXSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
             specials[i].kill();
             return;
         }
