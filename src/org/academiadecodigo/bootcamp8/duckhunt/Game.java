@@ -12,9 +12,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-
-
-public class Game implements KeyboardHandler {
+public class Game {
     private Canvas canvas;
     private Duck[] ducks;
     private GameObjects[] specials;
@@ -25,13 +23,13 @@ public class Game implements KeyboardHandler {
     private static int levelUp = 1500;
     private Menu menu;
     private boolean exit;
+    private Controller k;
 
     public Game() {
         canvas = Canvas.getInstance();
     }
 
     public void menu() throws InterruptedException {
-        exit = false;
         menu = new Menu();
         menu.menuSelection();
         init();
@@ -40,7 +38,6 @@ public class Game implements KeyboardHandler {
 
     public void init() throws InterruptedException {
         field = new Field();
-        gun = new Gun();
         gameScore = 0;
         gameLevel = 1;
         specials = new GameObjects[1];
@@ -50,20 +47,23 @@ public class Game implements KeyboardHandler {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
+        gun = new Gun();
         field.scoreInit(gameScore);
-        keyboardController();
+        k = new Controller();
+
     }
 
     public void start() throws InterruptedException {
         while (!exit) {
 
-            gun.resetX();gun.resetY();
+            gun.resetX();
+            gun.resetY();
             field.updateScore(gameScore);
             Thread.sleep(110);
 
             moveAllDucks();
-            if (specials[0] != null){
-            specialsMove();
+            if (specials[0] != null) {
+                specialsMove();
             }
 
             nightMode();
@@ -85,13 +85,14 @@ public class Game implements KeyboardHandler {
 
             if (gun.isLoaded() && gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet()
                     && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
-                if (ducks[i].getType() == DuckType.WHITEDUCK || ducks[i].getType() == DuckType.REVWHITEDUCK){
+                if (ducks[i].getType() == DuckType.RUBBER || ducks[i].getType() == DuckType.REVRUBBER) {
                     gameOver();
                 }
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
-                gun.resetX();gun.resetY();
+                gun.resetX();
+                gun.resetY();
                 return;
             }
 
@@ -101,7 +102,7 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    public void specialsMove(){
+    public void specialsMove() {
         int i = 0;
         if (specials[i].getXOffSet() + specials[i].getXSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
             specials[i].kill();
@@ -113,40 +114,68 @@ public class Game implements KeyboardHandler {
     }
 
 
-    public void level(){
+    public void level() {
         if (gameScore > levelUp * gameLevel) {
-            specials[0] = GameObjectsFactory.getNewSpecialObject();
             gameLevel++;
+            if (gameLevel % 5 != 0) {
+                specials[0] = GameObjectsFactory.getNewSpecialObject();
+            }
         }
     }
 
-    public void nightMode(){
-        if (gameLevel % 5 == 0){
+    public void nightMode() {
+        if (gameLevel % 5 == 0) {
             field.setNightMode();
         } else {
             field.restoreDayMode();
         }
     }
 
-    public void gameOver() throws InterruptedException{
+    public void gameOver() throws InterruptedException {
         field.gameOver();
+        exit = true;
         menu();
     }
 
-    private void keyboardController() {
-        Keyboard k = new Keyboard(this);
-        KeyboardEvent pressEsc = new KeyboardEvent();
-        pressEsc.setKey(KeyboardEvent.KEY_ESC);
-        pressEsc.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(pressEsc);
-    }
+    private class Controller implements KeyboardHandler {
+        private Keyboard key;
+        private KeyboardEvent[] escKey;
 
-    @Override
-    public void keyPressed(KeyboardEvent e){
-        exit = true;
-    }
+        public Controller(){
+            key = new Keyboard(this);
+            escKey = new KeyboardEvent[2];
+            createEvent();
+            setEvents();
+            addEventListener();
+        }
 
-    @Override
-    public void keyReleased(KeyboardEvent e) {}
+        public void createEvent() {
+            for (int i = 0; i < escKey.length; i++) {
+                escKey[i] = new KeyboardEvent();
+            }
+        }
+
+        public void setEvents() {
+            escKey[0].setKey(KeyboardEvent.KEY_ESC);
+            escKey[0].setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            escKey[1].setKey(KeyboardEvent.KEY_ESC);
+            escKey[1].setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        }
+
+        public void addEventListener() {
+            for (KeyboardEvent event : escKey) {
+                key.addEventListener(event);
+            }
+        }
+
+        @Override
+        public void keyPressed(KeyboardEvent e) {
+            exit = true;
+        }
+
+        @Override
+        public void keyReleased(KeyboardEvent e) {
+        }
+    }
 }
 

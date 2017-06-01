@@ -1,28 +1,29 @@
 package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 
+import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.SpecialsType;
 import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by prashanta on 28-05-2017.
  */
-public class UfoRepresentation implements MovableRepresentable {
-    private Picture ufo;
+public class SpecialRepresentation implements MovableRepresentable {
+    private Picture pic;
     private int moveFactor;
     private boolean dead;
 
 
-    public UfoRepresentation(int y, int speed) {
-        ufo = new Picture(0, y, "resources/images/game/specials/ufo-down.png");
+    public SpecialRepresentation(SpecialsType type) {
+        pic = new Picture(type.getxStart(), type.getyStart(), type.getPic1());
         moveFactor = 0;
     }
 
     public int getOffsetX() {
-        return ufo.getWidth();
+        return pic.getWidth();
     }
 
     public int getOffsetY() {
-        return ufo.getHeight();
+        return pic.getHeight();
     }
 
     @Override
@@ -33,16 +34,16 @@ public class UfoRepresentation implements MovableRepresentable {
     public void move(int xSpeed, int ySpeed) {
         if (!dead) {
             if (moveFactor == 0){
-                ufo.draw();
+                pic.draw();
                 moveFactor = 1;
             } else {
-                ufo.translate(xSpeed, ySpeed);
+                pic.translate(xSpeed, ySpeed);
             }
         }
     }
 
     public void kill() {
-        ufo.delete();
+        pic.delete();
         dead = true;
     }
 }

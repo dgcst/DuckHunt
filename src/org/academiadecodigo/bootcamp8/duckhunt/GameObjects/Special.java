@@ -1,15 +1,15 @@
 package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
 
-import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.UfoRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.SpecialRepresentation;
 import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 
 /**
  * Created by prashanta on 27-05-2017.
  */
-public class Ufo extends GameObjects {
+public class Special extends GameObjects {
     private int xSpeed;
     private int ySpeed;
-    private UfoRepresentation ufoRep;
+    private SpecialRepresentation specRep;
     private boolean dead;
     private int x;
     private int y;
@@ -17,23 +17,22 @@ public class Ufo extends GameObjects {
     private int yOffSet;
     private Sound sound;
 
-    public Ufo() {
-        this.xSpeed = 30;
-        this.ySpeed = -25;
-        this.x = 0;
-        this.y = 600;
-        this.ufoRep= new UfoRepresentation(y, xSpeed);
-        this.xOffSet = x + ufoRep.getOffsetX();
-        this.yOffSet = y + ufoRep.getOffsetY();
-        sound = new Sound ("/resources/sounds/ufo.wav");
-
-
-
+    public Special(SpecialsType type) {
+        this.xSpeed = type.getxSpeed();
+        this.ySpeed = type.getySpeed();
+        this.x = type.getxStart();
+        this.y = type.getyStart();
+        this.specRep = new SpecialRepresentation(type);
+        this.xOffSet = x + specRep.getOffsetX();
+        this.yOffSet = y + specRep.getOffsetY();
+        sound = new Sound(type.getSound());
     }
+
+
     public void move(){
         sound.play(false);
         if (!dead) {
-            ufoRep.move(xSpeed, ySpeed);
+            specRep.move(xSpeed, ySpeed);
             x += xSpeed;
             xOffSet += xSpeed;
             y += ySpeed;
@@ -44,7 +43,7 @@ public class Ufo extends GameObjects {
     public void kill() {
         sound.stop();
         dead = true;
-        ufoRep.kill();
+        specRep.kill();
     }
 
     public boolean isDead() {
