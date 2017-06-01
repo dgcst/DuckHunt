@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
 
 import org.academiadecodigo.bootcamp8.duckhunt.Field;
 import org.academiadecodigo.bootcamp8.duckhunt.Representable;
+import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -14,8 +15,6 @@ public class BulletsRepresentation implements Representable{
     private Picture[] pic1;
     private int maxBullets;
     private int currBulletIndex;
-    private Rectangle reloadButton;
-
 
     public BulletsRepresentation(int maxBullets){
         this.maxBullets = maxBullets;
@@ -25,21 +24,12 @@ public class BulletsRepresentation implements Representable{
 
     @Override
     public void init(){
-        reloadButton = new Rectangle(1000, 710, 160, 70);
-        reloadButton.setColor(Color.ORANGE);
-        reloadButton.fill();
-
-        Text text = new Text(1060, 740, "RELOAD");
-        text.setColor(Color.BLACK);
-        text.grow(30, 25);
-        text.draw();
-
         drawBullets();
     }
 
     public void drawBullets() {
         for (int i = currBulletIndex; i < maxBullets; i++) {
-            pic1[i] = new Picture(200 + (40 * i), FieldRepresentation.getFieldHeight() - 100, "resources/images/game/bullet.png");
+            pic1[i] = new Picture(226 + (38 * i), FieldRepresentation.getFieldHeight() - 92, "resources/images/game/bullet.png");
             pic1[i].draw();
         }
         currBulletIndex = maxBullets - 1;
@@ -54,19 +44,19 @@ public class BulletsRepresentation implements Representable{
 
     //+8 value to offset small mouse discrepancy found in SimpleGFX in X position
     public int getXReload(){
-        return reloadButton.getX() + 8;
+        return 137; //reloadButton.getX() + 8;
     }
 
     //+28 value to offset small mouse discrepancy in Y position
     public int getYReload(){
-        return reloadButton.getY() + 28;
+        return 697; //reloadButton.getY() + 28;
     }
 
     public int getXOffSetReload(){
-        return reloadButton.getWidth() + getXReload();
+        return 213;//reloadButton.getWidth() + getXReload();
     }
 
     public int getYOffSetReload(){
-        return reloadButton.getHeight() + getYReload();
+        return 780;//reloadButton.getHeight() + getYReload();
     }
 }
