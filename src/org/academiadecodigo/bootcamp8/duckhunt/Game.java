@@ -87,7 +87,7 @@ public class Game {
 
             if (gun.isLoaded() && gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet()
                     && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
-                if (ducks[i].getType() == DuckType.RUBBER || ducks[i].getType() == DuckType.REVRUBBER) {
+                if (ducks[i].getType() == DuckType.REVRUBBER) {
                     gameOver();
                 }
                 ducks[i].kill();

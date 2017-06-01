@@ -8,7 +8,6 @@ public enum DuckType {
     FAST(0, 40, 0, 200, "resources/images/game/duck_fast/duck1.png", "resources/images/game/duck_fast/duck2.png", "resources/images/game/duck_fast/duck3.png"),
     SLOW(0, 10, 0, 10, "resources/images/game/duck_slow/duck1.png", "resources/images/game/duck_slow/duck2.png", "resources/images/game/duck_slow/duck3.png"),
     SPECIAL(0, 50, 0, 1000, "resources/images/game/duck_special/duckspecial1.png", "resources/images/game/duck_special/duckspecial2.png", "resources/images/game/duck_special/duckspecial3.png"),
-    RUBBER(0, 20, 0, 0, "resources/images/game/duck_rubber/rubber_duck.png", "resources/images/game/duck_rubber/rubber_duck.png", "resources/images/game/duck_rubber/rubber_duck.png" ),
     REVNORMAL(FieldRepresentation.getFieldWidth()-120, -20, 0, 100, "resources/images/game/duck_normal/duck1-flipped.png", "resources/images/game/duck_normal/duck2-flipped.png", "resources/images/game/duck_normal/duck3-flipped.png"),
     REVFAST(FieldRepresentation.getFieldWidth()-120, -40, 0, 200, "resources/images/game/duck_fast/duck1-flipped.png", "resources/images/game/duck_fast/duck2-flipped.png", "resources/images/game/duck_fast/duck3-flipped.png"),
     REVSLOW(FieldRepresentation.getFieldWidth()-120, -10, 0, 10, "resources/images/game/duck_slow/duck1-flipped.png", "resources/images/game/duck_slow/duck2-flipped.png", "resources/images/game/duck_slow/duck3-flipped.png"),
