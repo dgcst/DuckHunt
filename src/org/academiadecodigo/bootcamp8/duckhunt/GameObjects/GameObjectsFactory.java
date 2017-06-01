@@ -22,6 +22,8 @@ public class GameObjectsFactory {
                 } else {
                     return new Duck(DuckType.SPECIAL);
                 }
+            case WHITEDUCK:
+                return new Duck(DuckType.WHITEDUCK);
             case REVSLOW:
                 return new Duck(DuckType.REVSLOW);
             case REVNORMAL:
@@ -34,6 +36,8 @@ public class GameObjectsFactory {
                 } else {
                     return new Duck(DuckType.REVSPECIAL);
                 }
+            case REVWHITEDUCK:
+                return new Duck(DuckType.REVWHITEDUCK);
         }
         return new Duck(DuckType.NORMAL);
     }

@@ -7,7 +7,7 @@ import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.DuckRepresentation;
 import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
 
 public class Duck extends GameObjects {
-
+    private DuckType type;
     private int xSpeed;
     private int ySpeed;
     private DuckRepresentation duckPicture;
@@ -21,6 +21,7 @@ public class Duck extends GameObjects {
     private Sound sound;
 
     public Duck(DuckType type) {
+        this.type = type;
         this.xSpeed = type.getxSpeed();
         this.ySpeed = type.getySpeed();
         this.killPoints = type.getKillPoints();
@@ -40,6 +41,10 @@ public class Duck extends GameObjects {
 
     public boolean isDead() {
         return dead;
+    }
+
+    public DuckType getType(){
+        return type;
     }
 
     public int getX() {

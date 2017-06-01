@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 // Created by dgcst on 25/05/17
 
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
+import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
@@ -75,6 +76,9 @@ public class Game {
 
             if (gun.isLoaded() && gun.getX() >= ducks[i].getX() && gun.getX() <= ducks[i].getXOffSet()
                     && gun.getY() >= ducks[i].getY() && gun.getY() <= ducks[i].getYOffSet()) {
+                if (ducks[i].getType() == DuckType.WHITEDUCK || ducks[i].getType() == DuckType.REVWHITEDUCK){
+                    gameOver();
+                }
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
@@ -109,10 +113,15 @@ public class Game {
 
     public void nightMode(){
         if (gameLevel % 5 == 0){
-            field.setNigthMode();
+            field.setNightMode();
         } else {
             field.restoreDayMode();
         }
+    }
+
+    public void gameOver() throws InterruptedException{
+        field.gameOver();
+        menu();
     }
 }
 

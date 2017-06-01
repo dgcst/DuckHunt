@@ -14,9 +14,6 @@ public class FieldRepresentation implements Representable {
     private Picture overlay;
     private Text displayScore;
     private boolean nightModeOn;
-    private Picture ready;
-    private Picture set;
-    private Picture go;
 
     @Override
     public void init() {
@@ -78,6 +75,12 @@ public class FieldRepresentation implements Representable {
         go.draw();
         set.delete();
         Thread.sleep(800);
+    }
+
+    public void gameOver() throws InterruptedException {
+        Picture gameOver = new Picture();
+        gameOver.draw();
+        Thread.sleep(2000);
     }
 
     public void scoreInit(Integer score) {

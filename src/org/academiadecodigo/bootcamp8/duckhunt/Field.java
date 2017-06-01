@@ -40,11 +40,15 @@ public class Field {
         background.updateScore(newScore);
     }
 
-    public void setNigthMode(){
+    public void setNightMode(){
         background.setNightMode();
     }
 
     public void restoreDayMode(){
         background.dayMode();
+    }
+
+    public void gameOver() throws InterruptedException{
+        background.gameOver();
     }
 }
