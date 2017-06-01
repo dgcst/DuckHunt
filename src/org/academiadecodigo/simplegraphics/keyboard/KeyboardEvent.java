@@ -54,6 +54,9 @@ public class KeyboardEvent {
     public static final int KEY_Y = KeyEvent.VK_Y;
     public static final int KEY_Z = KeyEvent.VK_Z;
 
+    /** Escape */
+    public static final int KEY_ESC = KeyEvent.VK_ESCAPE;
+
     private KeyboardEventType keyboardEventType;
     private int key;
 

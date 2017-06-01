@@ -181,6 +181,7 @@ public class Menu extends Game {
     public void credits() {
         menuRepresentation.credits();
     }
+
     private class MenuMouse implements MouseHandler {
 
         private Mouse mouse;
@@ -203,6 +204,10 @@ public class Menu extends Game {
         @Override
         public void mouseMoved(MouseEvent e) {
         }
+    }
+
+    public void toggleMenuSelection() {
+        this.menuSelection = !menuSelection;
     }
 }
 

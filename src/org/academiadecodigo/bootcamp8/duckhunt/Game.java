@@ -6,11 +6,17 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
-public class Game {
+public class Game implements KeyboardHandler {
     private Canvas canvas;
     private Duck[] ducks;
     private GameObjects[] specials;
@@ -19,13 +25,16 @@ public class Game {
     private Integer gameScore;
     private int gameLevel;
     private static int levelUp = 1500;
+    private Menu menu;
+    private boolean exit;
 
     public Game() {
         canvas = Canvas.getInstance();
     }
 
     public void menu() throws InterruptedException {
-        Menu menu = new Menu();
+        exit = false;
+        menu = new Menu();
         menu.menuSelection();
         init();
         start();
@@ -45,12 +54,14 @@ public class Game {
         field.welcomeMsg();
         field.scoreInit(gameScore);
         gun = new Gun();
+        keyboardController();
     }
 
     public void start() throws InterruptedException {
-        while (true) {
+        while (!exit) {
 
-            gun.resetX();gun.resetY();
+            gun.resetX();
+            gun.resetY();
             field.updateScore(gameScore);
             Thread.sleep(110);
 
@@ -63,7 +74,8 @@ public class Game {
             level();
             field.drawScore();
         }
-
+        exit = false;
+        menu();
     }
 
     public void moveAllDucks() throws InterruptedException {
@@ -111,10 +123,26 @@ public class Game {
 
     public void nightMode(){
         if (gameLevel % 5 == 0){
-            field.setNigthMode();
+            field.setNightMode();
         } else {
             field.restoreDayMode();
         }
     }
+
+    private void keyboardController() {
+        Keyboard k = new Keyboard(this);
+        KeyboardEvent pressEsc = new KeyboardEvent();
+        pressEsc.setKey(KeyboardEvent.KEY_ESC);
+        pressEsc.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(pressEsc);
+    }
+
+    @Override
+    public void keyPressed(KeyboardEvent e){
+        exit = true;
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent e) {}
 }
 

@@ -39,7 +39,7 @@ public class Field {
         background.updateScore(newScore);
     }
 
-    public void setNigthMode(){
+    public void setNightMode(){
         background.setNightMode();
     }
 
