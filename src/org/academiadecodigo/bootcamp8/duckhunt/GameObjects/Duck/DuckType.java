@@ -22,10 +22,10 @@ public enum DuckType {
     private String pic2;
     private String pic3;
 
-    DuckType(int xStart, int xspeed, int yspeed, int points, String source1, String source2, String source3) {
+    DuckType(int xStart, int xSpeed, int ySpeed, int points, String source1, String source2, String source3) {
         this.xStart = xStart;
-        this.xSpeed = xspeed;
-        this.ySpeed = yspeed;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
         killPoints = points;
         pic1 = source1;
         pic2 = source2;

@@ -47,10 +47,10 @@ public class Menu extends Game {
         creditsButtonY = 701;
         creditsButtonXOffset = 807;
         creditsButtonYOffset = 768;
-        backButtonX = 20;
-        backButtonY = 720;
-        backButtonXOffset = 100;
-        backButtonYOffset = 900;
+        backButtonX = 70;
+        backButtonY = 740;
+        backButtonXOffset = 290;
+        backButtonYOffset = 790;
         menuSelection = false;
         specialScreen = false;
     }
@@ -166,11 +166,11 @@ public class Menu extends Game {
 
     public void loading() throws InterruptedException {
         menuRepresentation.init();
+        menuRepresentation.menuSound();
         mainMenu();
     }
 
     public void mainMenu() {
-        menuRepresentation.menuSound();
         menuRepresentation.mainMenu();
     }
 

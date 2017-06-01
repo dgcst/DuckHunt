@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 
 public interface MovableRepresentable extends Representable {
 
-    void move(int speed);
+    void move(int xSpeed, int ySpeed);
 
     int getOffsetX();
 

@@ -32,22 +32,21 @@ public class DuckRepresentation implements MovableRepresentable {
     public void init() {
     }
 
-    @Override
-    public void move(int speed) {
+    public void move(int xSpeed, int ySpeed) {
         if (!dead) {
             if (imageOrder == 0) {
                 duck3.delete();
-                duck1.translate(speed*3, 0);
+                duck1.translate(xSpeed*3, ySpeed);
                 duck1.draw();
                 imageOrder = 1;
             } else if (imageOrder == 1) {
                 duck1.delete();
-                duck2.translate(speed*3, 0);
+                duck2.translate(xSpeed*3, ySpeed);
                 duck2.draw();
                 imageOrder = 2;
             } else if (imageOrder == 2) {
                 duck2.delete();
-                duck3.translate(speed*3, 0);
+                duck3.translate(xSpeed*3, ySpeed);
                 duck3.draw();
                 imageOrder = 0;
             }

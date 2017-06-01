@@ -8,8 +8,9 @@ public class Field {
     private int width;
     private int heigth;
 
-    public Field() {
+    public Field() throws InterruptedException {
         background = new FieldRepresentation();
+        welcomeMsg();
         background.init();
         this.width = background.getWidth();
         this.heigth = background.getHeight();

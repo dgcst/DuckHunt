@@ -7,7 +7,8 @@ import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
  * Created by prashanta on 27-05-2017.
  */
 public class Ufo extends GameObjects {
-    private int speed;
+    private int xSpeed;
+    private int ySpeed;
     private UfoRepresentation ufoRep;
     private boolean dead;
     private int x;
@@ -17,10 +18,11 @@ public class Ufo extends GameObjects {
     private Sound sound;
 
     public Ufo() {
-        this.speed = 30;
+        this.xSpeed = 30;
+        this.ySpeed = -25;
         this.x = 0;
         this.y = 600;
-        this.ufoRep= new UfoRepresentation(y, speed);
+        this.ufoRep= new UfoRepresentation(y, xSpeed);
         this.xOffSet = x + ufoRep.getOffsetX();
         this.yOffSet = y + ufoRep.getOffsetY();
         sound = new Sound ("/resources/sounds/ufo.wav");
@@ -31,11 +33,11 @@ public class Ufo extends GameObjects {
     public void move(){
         sound.play(false);
         if (!dead) {
-            ufoRep.move(speed);
-            x +=  speed;
-            xOffSet += speed;
-            y -= 25;
-            yOffSet -= 25;
+            ufoRep.move(xSpeed, ySpeed);
+            x += xSpeed;
+            xOffSet += xSpeed;
+            y += ySpeed;
+            yOffSet += ySpeed;
         }
     }
 
@@ -65,8 +67,12 @@ public class Ufo extends GameObjects {
         return yOffSet;
     }
 
-    public int getSpeed() {
-        return speed;
+    public int getXSpeed() {
+        return xSpeed;
+    }
+
+    public int getYSpeed() {
+        return ySpeed;
     }
 
 }

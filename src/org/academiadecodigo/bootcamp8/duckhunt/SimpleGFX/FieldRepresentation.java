@@ -11,26 +11,40 @@ public class FieldRepresentation implements Representable {
     private static int fieldHeight;
     private Picture background;
     private Picture nightMode;
+    private Picture overlay;
     private Text displayScore;
     private boolean nightModeOn;
+    private Picture ready;
+    private Picture set;
+    private Picture go;
 
     @Override
     public void init() {
         background = new Picture(0,0, "resources/images/game/background/background-up-clouds.png");
         nightMode = new Picture(0, 0, "resources/images/game/background/background-up-night.png");
+        overlay = new Picture(0, 0, "resources/images/game/overlay.png");
         fieldWidth = background.getWidth();
         fieldHeight = background.getHeight();
         background.draw();
+        newOverlay();
+
     }
 
-    public void setNightMode(){
-        nightModeOn = true;
-        background.delete();
-        nightMode.draw();
+    public void newOverlay() {
+        overlay.draw();
+    }
+
+    public void setNightMode() {
+        if (!nightModeOn) {
+            nightModeOn = true;
+            background.delete();
+            nightMode.draw();
+        }
     }
 
     public void dayMode(){
         if (nightModeOn) {
+            nightModeOn = false;
             nightMode.delete();
             background.draw();
         }
@@ -53,30 +67,23 @@ public class FieldRepresentation implements Representable {
     }
 
     public void welcomeMsg() throws InterruptedException {
-        Text text = new Text(580, 100, "Welcome to the VEGAN Duck Hunt");
-        text.setColor(Color.BLACK);
-        text.grow(400, 70);
-        text.draw();
-        Thread.sleep(2500);
-        text.delete();
-        Text text1 = new Text(600, 200, "Get Ready...");
-        text1.setColor(Color.BLACK);
-        text1.grow(200, 50);
-        text1.draw();
+        Picture ready = new Picture(0,0, "resources/images/game/intro/ready.png");
+        Picture set = new Picture(0,0, "resources/images/game/intro/set.png");
+        Picture go = new Picture(0,0, "resources/images/game/intro/go.png");
+        ready.draw();
+        Thread.sleep(2000);
+        set.draw();
+        ready.delete();
         Thread.sleep(1500);
-        text1.delete();
-        Text text2 = new Text(600, 300, "GO!");
-        text2.setColor(Color.BLACK);
-        text2.grow(100, 25);
-        text2.draw();
+        go.draw();
+        set.delete();
         Thread.sleep(800);
-        text2.delete();
     }
 
     public void scoreInit(Integer score) {
-        displayScore = new Text(120, 750, "Score: " + score.toString());
-        displayScore.setColor(Color.BLACK);
-        displayScore.grow(80, 20);
+        displayScore = new Text(964, 735, score.toString());
+        displayScore.setColor(Color.WHITE);
+        displayScore.grow(13, 13);
     }
 
     public void drawScore(){
@@ -84,7 +91,7 @@ public class FieldRepresentation implements Representable {
     }
 
     public void updateScore(Integer newScore){
-        displayScore.setText("Score: " + newScore.toString());
+        displayScore.setText(newScore.toString());
 
     }
 }

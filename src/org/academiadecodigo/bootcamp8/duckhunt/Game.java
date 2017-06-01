@@ -11,9 +11,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 
 public class Game implements KeyboardHandler {
@@ -42,6 +39,7 @@ public class Game implements KeyboardHandler {
 
     public void init() throws InterruptedException {
         field = new Field();
+        gun = new Gun();
         gameScore = 0;
         gameLevel = 1;
         specials = new GameObjects[1];
@@ -51,17 +49,14 @@ public class Game implements KeyboardHandler {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
-        field.welcomeMsg();
         field.scoreInit(gameScore);
-        gun = new Gun();
         keyboardController();
     }
 
     public void start() throws InterruptedException {
         while (!exit) {
 
-            gun.resetX();
-            gun.resetY();
+            gun.resetX();gun.resetY();
             field.updateScore(gameScore);
             Thread.sleep(110);
 
@@ -80,7 +75,7 @@ public class Game implements KeyboardHandler {
 
     public void moveAllDucks() throws InterruptedException {
         for (int i = 0; i < ducks.length; i++) {
-            if (ducks[i].getXOffSet() + ducks[i].getSpeed() >= field.getWidth() ||
+            if (ducks[i].getXOffSet() + ducks[i].getXSpeed() >= field.getWidth() ||
                     ducks[i].getXOffSet() < 0) {
                 ducks[i].kill();
                 ducks[i] = GameObjectsFactory.getNewDuck();
@@ -104,7 +99,7 @@ public class Game implements KeyboardHandler {
 
     public void specialsMove(){
         int i = 0;
-        if (specials[i].getXOffSet() + specials[i].getSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
+        if (specials[i].getXOffSet() + specials[i].getXSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
             specials[i].kill();
             return;
         }
