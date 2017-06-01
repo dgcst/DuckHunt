@@ -27,14 +27,16 @@ public class Game {
 
     public Game() {
         canvas = Canvas.getInstance();
+        k = new Controller();
     }
 
     public void menu() throws InterruptedException {
+        gun = null;
         exit = false;
         menu = new Menu();
         menu.menuSelection();
         init();
-        start();
+
     }
 
     public void init() throws InterruptedException {
@@ -48,9 +50,9 @@ public class Game {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
         specials = new GameObjects[1];
-        gun = new Gun();
         field.scoreInit(gameScore);
-        k = new Controller();
+        gun = new Gun();
+        start();
 
     }
 
@@ -70,7 +72,7 @@ public class Game {
             level();
             field.drawScore();
         }
-        exit = false;
+
         menu();
     }
 
