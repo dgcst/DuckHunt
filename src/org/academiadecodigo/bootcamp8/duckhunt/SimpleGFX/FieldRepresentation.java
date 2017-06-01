@@ -34,14 +34,17 @@ public class FieldRepresentation implements Representable {
         overlay.draw();
     }
 
-    public void setNightMode(){
-        nightModeOn = true;
-        background.delete();
-        nightMode.draw();
+    public void setNightMode() {
+        if (!nightModeOn) {
+            nightModeOn = true;
+            background.delete();
+            nightMode.draw();
+        }
     }
 
     public void dayMode(){
         if (nightModeOn) {
+            nightModeOn = false;
             nightMode.delete();
             background.draw();
         }
