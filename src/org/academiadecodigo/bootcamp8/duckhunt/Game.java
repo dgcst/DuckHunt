@@ -7,9 +7,14 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 
-public class Game {
+
+public class Game implements KeyboardHandler {
     private Canvas canvas;
     private Duck[] ducks;
     private GameObjects[] specials;
@@ -18,13 +23,16 @@ public class Game {
     private Integer gameScore;
     private int gameLevel;
     private static int levelUp = 1500;
+    private Menu menu;
+    private boolean exit;
 
     public Game() {
         canvas = Canvas.getInstance();
     }
 
     public void menu() throws InterruptedException {
-        Menu menu = new Menu();
+        exit = false;
+        menu = new Menu();
         menu.menuSelection();
         init();
         start();
@@ -43,11 +51,11 @@ public class Game {
         }
         specials = new GameObjects[1];
         field.scoreInit(gameScore);
-
+        keyboardController();
     }
 
     public void start() throws InterruptedException {
-        while (true) {
+        while (!exit) {
 
             gun.resetX();gun.resetY();
             field.updateScore(gameScore);
@@ -62,7 +70,8 @@ public class Game {
             level();
             field.drawScore();
         }
-
+        exit = false;
+        menu();
     }
 
     public void moveAllDucks() throws InterruptedException {
@@ -123,5 +132,21 @@ public class Game {
         field.gameOver();
         menu();
     }
+
+    private void keyboardController() {
+        Keyboard k = new Keyboard(this);
+        KeyboardEvent pressEsc = new KeyboardEvent();
+        pressEsc.setKey(KeyboardEvent.KEY_ESC);
+        pressEsc.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(pressEsc);
+    }
+
+    @Override
+    public void keyPressed(KeyboardEvent e){
+        exit = true;
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent e) {}
 }
 
