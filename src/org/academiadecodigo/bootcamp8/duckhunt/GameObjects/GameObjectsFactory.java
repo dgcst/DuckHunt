@@ -5,7 +5,6 @@ import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
 
 public class GameObjectsFactory {
-    private static int specialFactor = 0;
 
     public static Duck getNewDuck() {
         int random = (int) (Math.random() * DuckType.values().length);
@@ -43,7 +42,7 @@ public class GameObjectsFactory {
 
 
     public static GameObjects getNewSpecialObject(){
-        /*int random = (int) (Math.random() * SpecialsType.values().length);
+        int random = (int) (Math.random() * SpecialsType.values().length);
         SpecialsType specialType = SpecialsType.values()[random];
 
         switch (specialType) {
@@ -52,12 +51,6 @@ public class GameObjectsFactory {
             case CATARINA:
                 return new Special(SpecialsType.CATARINA);
         }
-        return new Special(SpecialsType.CATARINA);*/
-        if(specialFactor == 0){
-            specialFactor = 1;
-            return new Special(SpecialsType.UFO);
-        }
-        specialFactor = 0;
         return new Special(SpecialsType.CATARINA);
     }
 }
