@@ -136,7 +136,6 @@ public class Game {
         field.gameOver();
 
         exit = true;
-        //menu();
     }
 
     private class Controller implements KeyboardHandler {
