@@ -2,13 +2,14 @@ package org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck;
 
 // Created by dgcst on 25/05/17
 
+import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.GameObjects;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.DuckRepresentation;
 import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 
 public class Duck extends GameObjects {
     private DuckType type;
-    private DuckRepresentation duckPicture;
+    private MovableRepresentable duckPicture;
     private boolean dead;
     private int x;
     private int y;

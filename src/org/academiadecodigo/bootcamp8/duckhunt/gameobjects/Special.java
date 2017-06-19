@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 
+import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.SpecialRepresentation;
 import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 
@@ -8,7 +9,7 @@ import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
  */
 public class Special extends GameObjects {
     private SpecialsType type;
-    private SpecialRepresentation specRep;
+    private MovableRepresentable specRep;
     private boolean dead;
     private int x;
     private int y;

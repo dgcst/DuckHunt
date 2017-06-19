@@ -23,8 +23,9 @@ public class FieldRepresentation implements Field {
     }
 
     @Override
-    public void init() {
+    public void init() throws InterruptedException {
         background.draw();
+        welcomeMsg();
         overlay.draw();
 
     }
@@ -64,8 +65,8 @@ public class FieldRepresentation implements Field {
         return background.getHeight();
     }
 
-    @Override
-    public void welcomeMsg() throws InterruptedException {
+
+    private void welcomeMsg() throws InterruptedException {
         Picture ready = new Picture(0,0, "resources/images/game/intro/ready.png");
         Picture set = new Picture(0,0, "resources/images/game/intro/set.png");
         Picture go = new Picture(0,0, "resources/images/game/intro/go.png");
@@ -77,6 +78,7 @@ public class FieldRepresentation implements Field {
         go.draw();
         set.delete();
         Thread.sleep(800);
+        go.delete();
     }
 
     @Override

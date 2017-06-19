@@ -5,13 +5,11 @@ package org.academiadecodigo.bootcamp8.duckhunt;
  */
 public interface Field {
 
-    void init();
+    void init() throws InterruptedException;
 
     int getWidth();
 
     int getHeight();
-
-    void welcomeMsg() throws InterruptedException;
 
     void scoreInit(Integer score);
 

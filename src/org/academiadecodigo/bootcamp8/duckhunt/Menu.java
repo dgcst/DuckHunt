@@ -9,7 +9,6 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 public class Menu extends Game {
 
     private MenuRepresentation menuRepresentation;
-    private MenuMouse menuMouse;
     private int x;
     private int y;
     private int playButtonX;
@@ -32,7 +31,7 @@ public class Menu extends Game {
     private boolean menuSelection;
 
     public Menu() throws InterruptedException {
-        menuMouse = new MenuMouse();
+        new MenuMouse();
         menuRepresentation = new MenuRepresentation();
         loading();
         playButtonX = 453;
@@ -125,10 +124,6 @@ public class Menu extends Game {
 
     public int getBackButtonYOffset() {
         return backButtonYOffset;
-    }
-
-    public boolean isMenuSelection() {
-        return menuSelection;
     }
 
     public void menuSelection() throws InterruptedException {

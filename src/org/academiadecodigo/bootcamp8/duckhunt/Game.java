@@ -44,11 +44,11 @@ public class Game {
         }
         field.scoreInit(gameScore);
         gun = new Gun();
-        start();
+        startGame();
 
     }
 
-    public void start() throws InterruptedException {
+    public void startGame() throws InterruptedException {
         gun.enableGun();
         while (!exit) {
 

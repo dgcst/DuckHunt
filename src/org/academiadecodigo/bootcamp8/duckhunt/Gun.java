@@ -36,7 +36,7 @@ public class Gun {
         isSilent = false;
     }
 
-    public void shoot() {
+    private void shoot() {
         if (isSilent){
             return;
         }

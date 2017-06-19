@@ -28,27 +28,8 @@ public class Sound {
         clip.stop();
     }
 
-    public void close() {
-
-        clip.close();
-    }
-
     public void setLoop(int times) {
         clip.loop(times);
-    }
-
-    public void reOpen() {
-
-        AudioInputStream inputStream = null;
-
-        try {
-
-            inputStream = AudioSystem.getAudioInputStream(soundURL);
-            clip.open(inputStream);
-
-        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
     private void initClip(String path) {

@@ -10,7 +10,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class SpecialRepresentation implements MovableRepresentable {
     private Picture pic;
     private int moveFactor;
-    private boolean dead;
 
 
     public SpecialRepresentation(SpecialsType type) {
@@ -18,33 +17,30 @@ public class SpecialRepresentation implements MovableRepresentable {
         moveFactor = 0;
     }
 
+    @Override
     public int getOffsetX() {
         return pic.getWidth();
     }
 
+    @Override
     public int getOffsetY() {
         return pic.getHeight();
     }
 
-    @Override
-    public void init() {
-    }
 
     @Override
     public void move(int xSpeed, int ySpeed) {
-        if (!dead) {
-            if (moveFactor == 0){
-                pic.draw();
-                moveFactor = 1;
-            } else {
-                pic.translate(xSpeed, ySpeed);
-            }
+        if (moveFactor == 0){
+            pic.draw();
+            moveFactor = 1;
+        } else {
+            pic.translate(xSpeed, ySpeed);
         }
     }
 
+    @Override
     public void kill() {
         pic.delete();
-        dead = true;
     }
 }
 

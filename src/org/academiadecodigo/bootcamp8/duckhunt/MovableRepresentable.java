@@ -9,6 +9,6 @@ public interface MovableRepresentable {
 
     int getOffsetY();
 
-    void init() throws InterruptedException;
+    void kill();
 
 }
