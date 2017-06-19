@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp8.duckhunt.Sound;
+package org.academiadecodigo.bootcamp8.duckhunt.sound;
 
 import javax.sound.sampled.*;
 import java.io.File;

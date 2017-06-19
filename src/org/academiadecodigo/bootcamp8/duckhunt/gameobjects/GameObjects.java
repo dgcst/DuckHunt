@@ -1,9 +1,8 @@
-package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
+package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 // Created by dgcst on 25/05/17
 
 public abstract class GameObjects {
 
-    private SpecialsType type;
 
     public abstract void move();
 

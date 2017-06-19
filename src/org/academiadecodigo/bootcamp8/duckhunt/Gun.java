@@ -2,8 +2,8 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 
 // Created by dgcst on 25/05/17
 
-import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.BulletsRepresentation;
-import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
+import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.BulletsRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
@@ -11,11 +11,9 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
 public class Gun {
 
-    private GunController gunController;
     private BulletsRepresentation bulletPic;
     private static final int maxBullets = 12;
     private int currBullets;
-    private boolean loaded;
     private int x;
     private int y;
     private Sound sound;
@@ -23,10 +21,9 @@ public class Gun {
     private boolean isSilent;
 
     public Gun() {
-        gunController = new GunController();
+        new GunController();
         bulletPic = new BulletsRepresentation(maxBullets);
         currBullets = maxBullets;
-        loaded = true;
         sound = new Sound ("/resources/sounds/gun3.wav");
         reload = new Sound ("/resources/sounds/reload.wav");
     }
@@ -43,16 +40,12 @@ public class Gun {
         if (isSilent){
             return;
         }
-        if (currBullets == 0){
-            loaded = false;
-        }
         if ((x >= bulletPic.getXReload() && x <= bulletPic.getXOffSetReload()
                 && y >= bulletPic.getYReload() && y <= bulletPic.getYOffSetReload()
                 && currBullets != maxBullets)) {
             reload.play(true);
             bulletPic.drawBullets();
             currBullets = maxBullets;
-            loaded = true;
             return;
         }
         if(currBullets > 0){
@@ -60,23 +53,21 @@ public class Gun {
             sound.play(true);
             currBullets--;
         }
-
     }
 
     public int getX() {
         return x;
     }
 
-    public void resetX(){ x = -1;}
-
     public int getY() {
         return y;
     }
 
-    public void resetY(){ y = -1;}
+    public void reset(){ x = -1; y = -1;}
+
 
     public boolean isLoaded() {
-        return loaded;
+        return currBullets > 0;
     }
 
     

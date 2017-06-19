@@ -1,43 +1,33 @@
-package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
+package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 
-import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.SpecialRepresentation;
-import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
+import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.SpecialRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 
 /**
  * Created by prashanta on 27-05-2017.
  */
 public class Special extends GameObjects {
-    private int xSpeed;
-    private int ySpeed;
+    private SpecialsType type;
     private SpecialRepresentation specRep;
     private boolean dead;
     private int x;
     private int y;
-    private int xOffSet;
-    private int yOffSet;
     private Sound sound;
 
+
     public Special(SpecialsType type) {
-        this.xSpeed = type.getxSpeed();
-        this.ySpeed = type.getySpeed();
+        this.type = type;
         this.x = type.getxStart();
         this.y = type.getyStart();
         this.specRep = new SpecialRepresentation(type);
-        this.xOffSet = x + specRep.getOffsetX();
-        this.yOffSet = y + specRep.getOffsetY();
         sound = new Sound(type.getSound());
     }
 
-
     public void move(){
         sound.play(false);
-        if (!dead) {
-            specRep.move(xSpeed, ySpeed);
-            x += xSpeed;
-            xOffSet += xSpeed;
-            y += ySpeed;
-            yOffSet += ySpeed;
-        }
+        specRep.move(getXSpeed(), getYSpeed());
+        x += getXSpeed();
+        y += getYSpeed();
     }
 
     public void kill() {
@@ -59,19 +49,19 @@ public class Special extends GameObjects {
     }
 
     public int getXOffSet() {
-        return xOffSet;
+        return x + specRep.getOffsetX();
     }
 
     public int getYOffSet() {
-        return yOffSet;
+        return y + specRep.getOffsetY();
     }
 
     public int getXSpeed() {
-        return xSpeed;
+        return type.getxSpeed();
     }
 
     public int getYSpeed() {
-        return ySpeed;
+        return type.getySpeed();
     }
 
 }

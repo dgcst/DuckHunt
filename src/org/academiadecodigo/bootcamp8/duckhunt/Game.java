@@ -2,53 +2,46 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 
 // Created by dgcst on 25/05/17
 
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.Duck;
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.Duck.DuckType;
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjects;
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.GameObjectsFactory;
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.Special;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.Duck;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.DuckType;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.GameObjectsFactory;
+import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.FieldRepresentation;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game {
-    private Canvas canvas;
     private Duck[] ducks;
-    private GameObjects[] specials;
+    private Special special;
     private Gun gun;
     private Field field;
     private Integer gameScore;
     private int gameLevel;
-    private static int levelUp = 1500;
-    private Menu menu;
     private boolean exit;
-    private Controller k;
 
     public Game() {
-        canvas = Canvas.getInstance();
-        k = new Controller();
+        new Controller();
     }
 
     public void menu() throws InterruptedException {
         exit = false;
-        menu = new Menu();
+        Menu menu = new Menu();
         menu.menuSelection();
         init();
 
     }
 
     public void init() throws InterruptedException {
-        field = new Field();
+        field = new FieldRepresentation();
+        field.init();
         gameScore = 0;
         gameLevel = 1;
-        specials = new GameObjects[1];
-        specials[0] = GameObjectsFactory.getNewSpecialObject();
         ducks = new Duck[4];
         for (int i = 0; i < ducks.length; i++) {
             ducks[i] = GameObjectsFactory.getNewDuck();
         }
-        specials = new GameObjects[1];
         field.scoreInit(gameScore);
         gun = new Gun();
         start();
@@ -59,12 +52,12 @@ public class Game {
         gun.enableGun();
         while (!exit) {
 
-            gun.resetX();gun.resetY();
+            gun.reset();
             field.updateScore(gameScore);
             Thread.sleep(110);
 
             moveAllDucks();
-            if (specials[0] != null) {
+            if (special != null) {
                 specialsMove();
             }
 
@@ -93,7 +86,7 @@ public class Game {
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
                 ducks[i] = GameObjectsFactory.getNewDuck();
-                gun.resetX();gun.resetY();
+                gun.reset();
                 return;
             }
 
@@ -104,22 +97,23 @@ public class Game {
     }
 
     public void specialsMove() {
-        int i = 0;
-        if (specials[i].getXOffSet() + specials[i].getXSpeed() >= field.getWidth() || specials[i].getY() <= 0) {
-            specials[i].kill();
+        if (special.getXOffSet() + special.getXSpeed() >= field.getWidth() || special.getY() <= 0) {
+            special.kill();
+            special = null;
             return;
         }
-        if (!specials[i].isDead()) {
-            specials[i].move();
+        if (!special.isDead()) {
+            special.move();
         }
     }
 
 
     public void level() {
+        int levelUp = 1500;
         if (gameScore > levelUp * gameLevel) {
             gameLevel++;
             if (gameLevel % 5 != 0) {
-                specials[0] = GameObjectsFactory.getNewSpecialObject();
+                special = GameObjectsFactory.getNewSpecialObject();
             }
         }
     }
@@ -134,7 +128,6 @@ public class Game {
 
     public void gameOver() throws InterruptedException {
         field.gameOver();
-
         exit = true;
     }
 

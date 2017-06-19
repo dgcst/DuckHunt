@@ -1,7 +1,7 @@
-package org.academiadecodigo.bootcamp8.duckhunt.GameObjects;
+package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 // Created by dgcst on 25/05/17
 
-import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.FieldRepresentation;
+import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.FieldRepresentation;
 
 public enum SpecialsType {
     UFO(0, 600, 30, -25, "resources/images/game/specials/ufo-down.png", "/resources/sounds/ufo.wav" ),

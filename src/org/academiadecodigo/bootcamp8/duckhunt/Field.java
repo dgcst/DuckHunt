@@ -1,54 +1,27 @@
 package org.academiadecodigo.bootcamp8.duckhunt;
 
-import org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX.FieldRepresentation;
+/**
+ * Created by prashanta on 19-06-2017.
+ */
+public interface Field {
 
-public class Field {
+    void init();
 
-    private FieldRepresentation background;
-    private int width;
-    private int heigth;
+    int getWidth();
 
-    public Field() throws InterruptedException {
-        background = new FieldRepresentation();
-        welcomeMsg();
-        background.init();
-        this.width = background.getWidth();
-        this.heigth = background.getHeight();
-    }
+    int getHeight();
 
-    public int getWidth() {
-        return width;
-    }
+    void welcomeMsg() throws InterruptedException;
 
-    public int getHeigth() {
-        return heigth;
-    }
+    void scoreInit(Integer score);
 
-    public void welcomeMsg() throws InterruptedException {
-        background.welcomeMsg();
-    }
+    void drawScore();
 
-    public void scoreInit(Integer score){
-        background.scoreInit(score);
-    }
+    void updateScore(Integer newScore);
 
-    public void drawScore(){
-        background.drawScore();
-    }
+    void setNightMode();
 
-    public void updateScore(Integer newScore){
-        background.updateScore(newScore);
-    }
+    void restoreDayMode();
 
-    public void setNightMode(){
-        background.setNightMode();
-    }
-
-    public void restoreDayMode(){
-        background.dayMode();
-    }
-
-    public void gameOver() throws InterruptedException{
-        background.gameOver();
-    }
+    void gameOver() throws InterruptedException;
 }

@@ -1,10 +1,9 @@
-package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
+package org.academiadecodigo.bootcamp8.duckhunt.simplegfx;
 
-import org.academiadecodigo.bootcamp8.duckhunt.Representable;
-import org.academiadecodigo.bootcamp8.duckhunt.Sound.Sound;
+import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class MenuRepresentation implements Representable {
+public class MenuRepresentation {
 
     private Picture menuBackground;
     private Picture menuLoading;
@@ -22,7 +21,6 @@ public class MenuRepresentation implements Representable {
 
     }
 
-    @Override
     public void init() throws InterruptedException {
         menuLoading.draw();
         Thread.sleep(600);

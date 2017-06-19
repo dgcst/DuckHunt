@@ -1,6 +1,6 @@
-package org.academiadecodigo.bootcamp8.duckhunt.SimpleGFX;
+package org.academiadecodigo.bootcamp8.duckhunt.simplegfx;
 
-import org.academiadecodigo.bootcamp8.duckhunt.GameObjects.SpecialsType;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.SpecialsType;
 import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
