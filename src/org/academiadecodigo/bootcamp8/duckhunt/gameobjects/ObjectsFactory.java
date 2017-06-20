@@ -4,7 +4,7 @@ package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.DuckType;
 
-public class GameObjectsFactory {
+public class ObjectsFactory {
     private static final double CHANCE_FACTOR = 0.7;
 
     public static Duck getNewDuck() {

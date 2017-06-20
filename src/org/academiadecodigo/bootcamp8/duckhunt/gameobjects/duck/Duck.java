@@ -2,12 +2,11 @@ package org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck;
 
 // Created by dgcst on 25/05/17
 
-import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
-import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.GameObjects;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.MovableRepresentable;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.DuckRepresentation;
 import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 
-public class Duck extends GameObjects {
+public class Duck {
     private DuckType type;
     private MovableRepresentable duckPicture;
     private boolean dead;
@@ -35,7 +34,7 @@ public class Duck extends GameObjects {
     public void kill() {
         duckSound.stop();
         dead = true;
-        duckPicture.kill();
+        duckPicture.delete();
     }
 
     private int duckSpawnY() {

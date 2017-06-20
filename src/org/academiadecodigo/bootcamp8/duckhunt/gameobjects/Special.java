@@ -1,16 +1,14 @@
 package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 
-import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.SpecialRepresentation;
 import org.academiadecodigo.bootcamp8.duckhunt.sound.Sound;
 
 /**
  * Created by prashanta on 27-05-2017.
  */
-public class Special extends GameObjects {
+public class Special {
     private SpecialsType type;
     private MovableRepresentable specRep;
-    private boolean dead;
     private int x;
     private int y;
     private Sound sound;
@@ -31,14 +29,9 @@ public class Special extends GameObjects {
         y += getYSpeed();
     }
 
-    public void kill() {
+    public void remove() {
         sound.stop();
-        dead = true;
-        specRep.kill();
-    }
-
-    public boolean isDead() {
-        return dead;
+        specRep.delete();
     }
 
     public int getX() {

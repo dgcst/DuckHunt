@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp8.duckhunt.simplegfx;
 
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.SpecialsType;
-import org.academiadecodigo.bootcamp8.duckhunt.MovableRepresentable;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
@@ -39,7 +39,7 @@ public class SpecialRepresentation implements MovableRepresentable {
     }
 
     @Override
-    public void kill() {
+    public void delete() {
         pic.delete();
     }
 }

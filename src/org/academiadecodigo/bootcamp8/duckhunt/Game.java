@@ -5,7 +5,7 @@ package org.academiadecodigo.bootcamp8.duckhunt;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.Special;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.DuckType;
-import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.GameObjectsFactory;
+import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.ObjectsFactory;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.FieldRepresentation;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -40,7 +40,7 @@ public class Game {
         gameLevel = 1;
         ducks = new Duck[4];
         for (int i = 0; i < ducks.length; i++) {
-            ducks[i] = GameObjectsFactory.getNewDuck();
+            ducks[i] = ObjectsFactory.getNewDuck();
         }
         field.scoreInit(gameScore);
         gun = new Gun();
@@ -74,7 +74,7 @@ public class Game {
             if (ducks[i].getXOffSet() + ducks[i].getXSpeed() >= field.getWidth() ||
                     ducks[i].getXOffSet() < 0) {
                 ducks[i].kill();
-                ducks[i] = GameObjectsFactory.getNewDuck();
+                ducks[i] = ObjectsFactory.getNewDuck();
                 return;
             }
 
@@ -85,7 +85,7 @@ public class Game {
                 }
                 ducks[i].kill();
                 gameScore += ducks[i].getKillPoints();
-                ducks[i] = GameObjectsFactory.getNewDuck();
+                ducks[i] = ObjectsFactory.getNewDuck();
                 gun.reset();
                 return;
             }
@@ -97,14 +97,12 @@ public class Game {
     }
 
     public void specialsMove() {
-        if (special.getXOffSet() + special.getXSpeed() >= field.getWidth() || special.getY() <= 0) {
-            special.kill();
+        if (special.getXOffSet() + special.getXSpeed() >= field.getWidth() || special.getX() <= 0 || special.getY() <= 0) {
+            special.remove();
             special = null;
             return;
         }
-        if (!special.isDead()) {
-            special.move();
-        }
+        special.move();
     }
 
 
@@ -113,7 +111,7 @@ public class Game {
         if (gameScore > levelUp * gameLevel) {
             gameLevel++;
             if (gameLevel % 5 != 0) {
-                special = GameObjectsFactory.getNewSpecialObject();
+                special = ObjectsFactory.getNewSpecialObject();
             }
         }
     }

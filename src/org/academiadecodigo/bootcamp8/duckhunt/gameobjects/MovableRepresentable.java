@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp8.duckhunt;
+package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 // Created by dgcst on 25/05/17
 
 public interface MovableRepresentable {
@@ -9,6 +9,6 @@ public interface MovableRepresentable {
 
     int getOffsetY();
 
-    void kill();
+    void delete();
 
 }
