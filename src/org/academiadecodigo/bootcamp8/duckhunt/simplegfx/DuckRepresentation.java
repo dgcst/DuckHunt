@@ -4,57 +4,41 @@ import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.DuckType;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.MovableRepresentable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-
 public class DuckRepresentation implements MovableRepresentable {
-    private Picture duck1;
-    private Picture duck2;
-    private Picture duck3;
+    private Picture[] duckPics;
     private int imageOrder;
 
 
     public DuckRepresentation(DuckType type, int duckSpawn) {
-        duck1 = new Picture(type.getxStart(), duckSpawn, type.getPic1());
-        duck2 = new Picture(type.getxStart(), duckSpawn, type.getPic2());
-        duck3 = new Picture(type.getxStart(), duckSpawn, type.getPic3());
         imageOrder = 0;
-
+        duckPics = new Picture[3];
+        duckPics[0] = new Picture(type.getxStart(), duckSpawn, type.getPic1());
+        duckPics[1] = new Picture(type.getxStart(), duckSpawn, type.getPic2());
+        duckPics[2] = new Picture(type.getxStart(), duckSpawn, type.getPic3());
     }
 
     @Override
     public int getOffsetX() {
-        return duck1.getWidth();
+        return duckPics[0].getWidth();
     }
 
     @Override
     public int getOffsetY() {
-        return duck1.getHeight();
+        return duckPics[0].getHeight();
     }
 
     @Override
     public void move(int xSpeed, int ySpeed) {
-        if (imageOrder == 0) {
-            duck3.delete();
-            duck1.translate(xSpeed*3, ySpeed);
-            duck1.draw();
-            imageOrder = 1;
-        } else if (imageOrder == 1) {
-            duck1.delete();
-            duck2.translate(xSpeed*3, ySpeed);
-            duck2.draw();
-            imageOrder = 2;
-        } else if (imageOrder == 2) {
-            duck2.delete();
-            duck3.translate(xSpeed*3, ySpeed);
-            duck3.draw();
-            imageOrder = 0;
-        }
+        duckPics[imageOrder].delete();
+        imageOrder = imageOrder == duckPics.length - 1 ? 0 : ++imageOrder;
+        duckPics[imageOrder].translate(xSpeed*duckPics.length, ySpeed);
+        duckPics[imageOrder].draw();
     }
-
 
     @Override
     public void delete() {
-        duck1.delete();
-        duck2.delete();
-        duck3.delete();
+        for (Picture p: duckPics) {
+            p.delete();
+        }
     }
 }

@@ -32,20 +32,4 @@ public class BulletsRepresentation {
             currBulletIndex--;
         }
     }
-
-    public int getXReload(){
-        return 137;
-    }
-
-    public int getYReload(){
-        return 697;
-    }
-
-    public int getXOffSetReload(){
-        return 213;
-    }
-
-    public int getYOffSetReload(){
-        return 780;
-    }
 }

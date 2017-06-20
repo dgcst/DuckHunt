@@ -34,6 +34,7 @@ public class ObjectsFactory {
         return new Duck(DuckType.REVNORMAL);
     }
 
+
     public static Special getNewSpecialObject(){
         int random = (int) (Math.random() * SpecialsType.values().length);
         SpecialsType specialType = SpecialsType.values()[random];

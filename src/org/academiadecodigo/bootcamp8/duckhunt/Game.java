@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.Special;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.Duck;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.duck.DuckType;
 import org.academiadecodigo.bootcamp8.duckhunt.gameobjects.ObjectsFactory;
+import org.academiadecodigo.bootcamp8.duckhunt.menuandbuttons.Menu;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.FieldRepresentation;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -33,7 +34,7 @@ public class Game {
 
     }
 
-    public void init() throws InterruptedException {
+    private void init() throws InterruptedException {
         field = new FieldRepresentation();
         field.init();
         gameScore = 0;
@@ -48,7 +49,7 @@ public class Game {
 
     }
 
-    public void startGame() throws InterruptedException {
+    private void startGame() throws InterruptedException {
         gun.enableGun();
         while (!exit) {
 
@@ -69,7 +70,7 @@ public class Game {
         menu();
     }
 
-    public void moveAllDucks() throws InterruptedException {
+    private void moveAllDucks() throws InterruptedException {
         for (int i = 0; i < ducks.length; i++) {
             if (ducks[i].getXOffSet() + ducks[i].getXSpeed() >= field.getWidth() ||
                     ducks[i].getXOffSet() < 0) {
@@ -96,8 +97,8 @@ public class Game {
         }
     }
 
-    public void specialsMove() {
-        if (special.getXOffSet() + special.getXSpeed() >= field.getWidth() || special.getX() <= 0 || special.getY() <= 0) {
+    private void specialsMove() {
+        if (special.getXOffSet() + special.getXSpeed() >= field.getWidth() || special.getX() < 0 || special.getY() < 0) {
             special.remove();
             special = null;
             return;
@@ -105,8 +106,7 @@ public class Game {
         special.move();
     }
 
-
-    public void level() {
+    private void level() {
         int levelUp = 1500;
         if (gameScore > levelUp * gameLevel) {
             gameLevel++;
@@ -116,7 +116,7 @@ public class Game {
         }
     }
 
-    public void nightMode() {
+    private void nightMode() {
         if (gameLevel % 5 == 0) {
             field.setNightMode();
         } else {
@@ -124,7 +124,7 @@ public class Game {
         }
     }
 
-    public void gameOver() throws InterruptedException {
+    private void gameOver() throws InterruptedException {
         field.gameOver();
         exit = true;
     }
@@ -133,7 +133,7 @@ public class Game {
         private Keyboard key;
         private KeyboardEvent[] escKey;
 
-        public Controller(){
+        Controller(){
             key = new Keyboard(this);
             escKey = new KeyboardEvent[2];
             createEvent();
@@ -141,20 +141,20 @@ public class Game {
             addEventListener();
         }
 
-        public void createEvent() {
+        void createEvent() {
             for (int i = 0; i < escKey.length; i++) {
                 escKey[i] = new KeyboardEvent();
             }
         }
 
-        public void setEvents() {
+        void setEvents() {
             escKey[0].setKey(KeyboardEvent.KEY_ESC);
             escKey[0].setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             escKey[1].setKey(KeyboardEvent.KEY_ESC);
             escKey[1].setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         }
 
-        public void addEventListener() {
+        void addEventListener() {
             for (KeyboardEvent event : escKey) {
                 key.addEventListener(event);
             }

@@ -27,7 +27,6 @@ public class FieldRepresentation implements Field {
         background.draw();
         welcomeMsg();
         overlay.draw();
-
     }
 
 
@@ -103,6 +102,5 @@ public class FieldRepresentation implements Field {
     @Override
     public void updateScore(Integer newScore){
         displayScore.setText(newScore.toString());
-
     }
 }

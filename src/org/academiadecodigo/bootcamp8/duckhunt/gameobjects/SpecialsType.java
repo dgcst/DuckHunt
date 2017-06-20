@@ -4,7 +4,7 @@ package org.academiadecodigo.bootcamp8.duckhunt.gameobjects;
 import org.academiadecodigo.bootcamp8.duckhunt.simplegfx.FieldRepresentation;
 
 public enum SpecialsType {
-    UFO(0, 600, 30, -25, "resources/images/game/specials/ufo-down.png", "/resources/sounds/ufo.wav" ),
+    UFO(10, 600, 30, -25, "resources/images/game/specials/ufo-down.png", "/resources/sounds/ufo.wav" ),
     CATARINA(FieldRepresentation.getFieldWidth()-180, 500, -25, -10,
             "resources/images/game/specials/planecatarina.png" , "/resources/sounds/airplane.wav");
 
